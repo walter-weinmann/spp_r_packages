@@ -71,18 +71,28 @@ create_df_mid_raw <- function(database) {
 }
 
 
-#' Distribution of the volume of data on year and symbol.
+#' Distribution of the volume of data on symbol.
+#'
+#' @param df_tad A dataframe containing transaction data
+#' @import dplyr
+#' @export
+
+get_distr_symbol <- function(df_tad) {
+  group_by(df_tad,symbol)
+}
+
+
+#' Distribution of the volume of data on year.
 #'
 #' @param df_tad A dataframe containing transaction data
 #' @import dplyr
 #' @import stringr
-#' @importFrom "utils" "str"
 #' @export
 
-get_distr_year_symbol <- function(df_tad) {
-  df_date_symbol <- data.frame(str_sub(df_tad$date, 1, 4), df_tad$symbol)
-  colnames(df_date_symbol) <- c("year", "symbol")
-  group_by(df_date_symbol,year,symbol)
+get_distr_year <- function(df_tad) {
+  df_year <- data.frame(str_sub(df_tad$date, 1, 4))
+  colnames(df_year) <- c("year")
+  group_by(df_year,year)
 }
 
 
