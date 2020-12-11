@@ -82,8 +82,7 @@ create_df_mid_raw <- function(database) {
 get_distr_year_symbol <- function(df_tad) {
   df_date_symbol <- data.frame(str_sub(df_tad$date, 1, 4), df_tad$symbol)
   colnames(df_date_symbol) <- c("year", "symbol")
-  str(df_date_symbol)
-
+  group_by(df_date_symbol,year,symbol)
 }
 
 
