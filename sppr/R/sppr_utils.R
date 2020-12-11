@@ -102,9 +102,10 @@ get_distr_year <- function(df_tad) {
 #' @export
 
 sppr_install <- function() {
+  install.packages(c("dplyr"), repos = "https://stat.ethz.ch/CRAN/")
+
   install.packages(c("DBI",
                      "devtools",
-                     "dplyr",
                      "forecast",
                      "formatR",
                      "ggplot2",
