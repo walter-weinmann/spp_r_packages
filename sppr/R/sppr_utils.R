@@ -78,7 +78,7 @@ create_df_mid_raw <- function(database) {
 #' @export
 
 get_distr_symbol <- function(df_tad) {
-  group_by(df_tad,symbol)
+  count(group_by(df_tad$symbol))
 }
 
 
@@ -92,7 +92,7 @@ get_distr_symbol <- function(df_tad) {
 get_distr_year <- function(df_tad) {
   df_year <- data.frame(str_sub(df_tad$date, 1, 4))
   colnames(df_year) <- c("year")
-  group_by(df_year,year)
+  count(group_by(df_year$year))
 }
 
 
@@ -102,9 +102,23 @@ get_distr_year <- function(df_tad) {
 #' @export
 
 sppr_install <- function() {
-  install.packages(c("DBI", "dplyr", "devtools", "forecast", "formatR",
-                     "ggplot2", "knitr", "lintr", "readr", "rmarkdown",
-                     "roxygen2", "RSQLite", "testthat", "TSstudio", "xts",
+  install.packages(c("DBI",
+                     "devtools",
+                     "dplyr",
+                     "forecast",
+                     "formatR",
+                     "ggplot2",
+                     "knitr",
+                     "lintr",
+                     "pillar",
+                     "R6",
+                     "readr",
+                     "rmarkdown",
+                     "roxygen2",
+                     "RSQLite",
+                     "testthat",
+                     "TSstudio",
+                     "xts",
                      "zoo"), repos = "https://stat.ethz.ch/CRAN/")
 
   quit(save = "no")
