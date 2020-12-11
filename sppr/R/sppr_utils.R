@@ -230,14 +230,14 @@ sppr_install_pacman <- function() {
                 "zoo")
 
   if (!"pacman" %in% installed.packages()) {
-    install.packages("pacman", repos = "https://cran.r-project.org")
+    install.packages("pacman", repos = "https://cran.r-project.org/")
   }
 
   library(pacman)
 
   p_unload(all)
 
-  p_set_cranrepo(default_repo = "http://cran.r-project.org")
+  p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
   pacman::p_load(packages)
 }
