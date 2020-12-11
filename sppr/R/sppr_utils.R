@@ -164,7 +164,7 @@ sppr_install <- function() {
 
   # install missing packages ===================================================
   if (!"librarian" %in% installed.packages()) {
-    install.packages("librarian", repos = "https://stat.ethz.ch/CRAN/")
+    install.packages("librarian", repos = "https://cran.r-project.org")
   }
 
   librarian::shelf(DBI,
@@ -190,64 +190,64 @@ sppr_install <- function() {
   # # install missing packages - with priority
   # ===================================
   # if (!"dplyr" %in% installed.packages()) {
-  #   install.packages("dplyr", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("dplyr", repos = "https://cran.r-project.org")
   # }
   #
   # # install missing packages - without priority
   # ================================
   #
   # if (!"DBI" %in% installed.packages()) {
-  #   install.packages("DBI", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("DBI", repos = "https://cran.r-project.org")
   # }
   # if (!"devtools" %in% installed.packages()) {
-  #   install.packages("devtools", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("devtools", repos = "https://cran.r-project.org")
   # }
   # if (!"forecast" %in% installed.packages()) {
-  #   install.packages("forecast", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("forecast", repos = "https://cran.r-project.org")
   # }
   # if (!"formatR" %in% installed.packages()) {
-  #   install.packages("formatR", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("formatR", repos = "https://cran.r-project.org")
   # }
   # if (!"ggplot2" %in% installed.packages()) {
-  #   install.packages("ggplot2", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("ggplot2", repos = "https://cran.r-project.org")
   # }
   # if (!"knitr" %in% installed.packages()) {
-  #   install.packages("knitr", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("knitr", repos = "https://cran.r-project.org")
   # }
   # if (!"lintr" %in% installed.packages()) {
-  #   install.packages("lintr", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("lintr", repos = "https://cran.r-project.org")
   # }
   # if (!"pillar" %in% installed.packages()) {
-  #   install.packages("pillar", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("pillar", repos = "https://cran.r-project.org")
   # }
   # if (!"R6" %in% installed.packages()) {
-  #   install.packages("R6", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("R6", repos = "https://cran.r-project.org")
   # }
   # if (!"readr" %in% installed.packages()) {
-  #   install.packages("readr", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("readr", repos = "https://cran.r-project.org")
   # }
   # if (!"rmarkdown" %in% installed.packages()) {
-  #   install.packages("rmarkdown", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("rmarkdown", repos = "https://cran.r-project.org")
   # }
   # if (!"roxygen2" %in% installed.packages()) {
-  #   install.packages("roxygen2", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("roxygen2", repos = "https://cran.r-project.org")
   # }
   # if (!"RSQLite" %in% installed.packages()) {
-  #   install.packages("RSQLite", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("RSQLite", repos = "https://cran.r-project.org")
   # }
   # if (!"stringr" %in% installed.packages()) {
-  #   install.packages("stringr", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("stringr", repos = "https://cran.r-project.org")
   # }
   # if (!"testthat" %in% installed.packages()) {
-  #   install.packages("testthat", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("testthat", repos = "https://cran.r-project.org")
   # }
   # if (!"TSstudio" %in% installed.packages()) {
-  #   install.packages("TSstudio", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("TSstudio", repos = "https://cran.r-project.org")
   # }
   # if (!"xts" %in% installed.packages()) {
-  #   install.packages("xts", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("xts", repos = "https://cran.r-project.org")
   # }
   # if (!"zoo" %in% installed.packages()) {
-  #   install.packages("zoo", repos = "https://stat.ethz.ch/CRAN/")
+  #   install.packages("zoo", repos = "https://cran.r-project.org")
   # }
 }
