@@ -29,7 +29,7 @@ create_df_eod_raw <- function(database) {
          volume_adj_orig adj_volume
     FROM eod_data
    ORDER BY date,
-            symbol")
+            symbol", .libPaths()[1])
 
   dbDisconnect(con)
 
@@ -63,7 +63,7 @@ create_df_mid_raw <- function(database) {
          volume_adj_orig adj_volume
     FROM mid_data
    ORDER BY date,
-            symbol")
+            symbol", .libPaths()[1])
 
   dbDisconnect(con)
 
@@ -91,7 +91,7 @@ get_distr_symbol <- function(df_tad) {
 
 get_distr_year <- function(df_tad) {
   df_year <- data.frame(str_sub(df_tad$date, 1, 4))
-  colnames(df_year) <- c("year")
+  colnames(df_year) <- c("year", .libPaths()[1])
   count(group_by(df_year$year))
 }
 
@@ -102,44 +102,124 @@ get_distr_year <- function(df_tad) {
 #' @export
 
 sppr_install <- function() {
-  if ("DBI" %in% installed.packages()) remove.packages("DBI")
-  if ("devtools" %in% installed.packages()) remove.packages("devtools")
-  if ("dplyr" %in% installed.packages()) remove.packages("dplyr")
-  if ("forecast" %in% installed.packages()) remove.packages("forecast")
-  if ("formatR" %in% installed.packages()) remove.packages("formatR")
-  if ("ggplot2" %in% installed.packages()) remove.packages("ggplot2")
-  if ("knitr" %in% installed.packages()) remove.packages("knitr")
-  if ("lintr" %in% installed.packages()) remove.packages("lintr")
-  if ("pillar" %in% installed.packages()) remove.packages("pillar")
-  if ("R6" %in% installed.packages()) remove.packages("R6")
-  if ("readr" %in% installed.packages()) remove.packages("readr")
-  if ("rmarkdown" %in% installed.packages()) remove.packages("rmarkdown")
-  if ("roxygen2" %in% installed.packages()) remove.packages("roxygen2")
-  if ("RSQLite" %in% installed.packages()) remove.packages("RSQLite")
-  if ("stringr" %in% installed.packages()) remove.packages("stringr")
-  if ("testthat" %in% installed.packages()) remove.packages("testthat")
-  if ("TSstudio" %in% installed.packages()) remove.packages("TSstudio")
-  if ("xts" %in% installed.packages()) remove.packages("xts")
-  if ("zoo" %in% installed.packages()) remove.packages("zoo")
+  # remove existing packages ===================================================
+  if ("DBI" %in% installed.packages()) {
+    remove.packages("DBI", .libPaths()[1])
+  }
+  if ("devtools" %in% installed.packages()) {
+    remove.packages("devtools", .libPaths()[1])
+  }
+  if ("dplyr" %in% installed.packages()) {
+    remove.packages("dplyr", .libPaths()[1])
+  }
+  if ("forecast" %in% installed.packages()) {
+    remove.packages("forecast", .libPaths()[1])
+  }
+  if ("formatR" %in% installed.packages()) {
+    remove.packages("formatR", .libPaths()[1])
+  }
+  if ("ggplot2" %in% installed.packages()) {
+    remove.packages("ggplot2", .libPaths()[1])
+  }
+  if ("knitr" %in% installed.packages()) {
+    remove.packages("knitr", .libPaths()[1])
+  }
+  if ("lintr" %in% installed.packages()) {
+    remove.packages("lintr", .libPaths()[1])
+  }
+  if ("pillar" %in% installed.packages()) {
+    remove.packages("pillar", .libPaths()[1])
+  }
+  if ("R6" %in% installed.packages()) {
+    remove.packages("R6", .libPaths()[1])
+  }
+  if ("readr" %in% installed.packages()) {
+    remove.packages("readr", .libPaths()[1])
+  }
+  if ("rmarkdown" %in% installed.packages()) {
+    remove.packages("rmarkdown", .libPaths()[1])
+  }
+  if ("roxygen2" %in% installed.packages()) {
+    remove.packages("roxygen2", .libPaths()[1])
+  }
+  if ("RSQLite" %in% installed.packages()) {
+    remove.packages("RSQLite", .libPaths()[1])
+  }
+  if ("stringr" %in% installed.packages()) {
+    remove.packages("stringr", .libPaths()[1])
+  }
+  if ("testthat" %in% installed.packages()) {
+    remove.packages("testthat", .libPaths()[1])
+  }
+  if ("TSstudio" %in% installed.packages()) {
+    remove.packages("TSstudio", .libPaths()[1])
+  }
+  if ("xts" %in% installed.packages()) {
+    remove.packages("xts", .libPaths()[1])
+  }
+  if ("zoo" %in% installed.packages()) {
+    remove.packages("zoo", .libPaths()[1])
+  }
 
-  install.packages(c("dplyr"), repos = "https://stat.ethz.ch/CRAN/")
+  # install missing packages - with priority ===================================
+  if (!"dplyr" %in% installed.packages()) {
+    install.packages("dplyr", repos = "https://stat.ethz.ch/CRAN/")
+  }
 
-  install.packages(c("DBI",
-                     "devtools",
-                     "forecast",
-                     "formatR",
-                     "ggplot2",
-                     "knitr",
-                     "lintr",
-                     "pillar",
-                     "R6",
-                     "readr",
-                     "rmarkdown",
-                     "roxygen2",
-                     "RSQLite",
-                     "stringr",
-                     "testthat",
-                     "TSstudio",
-                     "xts",
-                     "zoo"), repos = "https://stat.ethz.ch/CRAN/")
+  # install missing packages - without priority ================================
+
+  if (!"DBI" %in% installed.packages()) {
+    install.packages("DBI", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"devtools" %in% installed.packages()) {
+    install.packages("devtools", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"forecast" %in% installed.packages()) {
+    install.packages("forecast", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"formatR" %in% installed.packages()) {
+    install.packages("formatR", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"ggplot2" %in% installed.packages()) {
+    install.packages("ggplot2", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"knitr" %in% installed.packages()) {
+    install.packages("knitr", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"lintr" %in% installed.packages()) {
+    install.packages("lintr", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"pillar" %in% installed.packages()) {
+    install.packages("pillar", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"R6" %in% installed.packages()) {
+    install.packages("R6", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"readr" %in% installed.packages()) {
+    install.packages("readr", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"rmarkdown" %in% installed.packages()) {
+    install.packages("rmarkdown", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"roxygen2" %in% installed.packages()) {
+    install.packages("roxygen2", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"RSQLite" %in% installed.packages()) {
+    install.packages("RSQLite", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"stringr" %in% installed.packages()) {
+    install.packages("stringr", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"testthat" %in% installed.packages()) {
+    install.packages("testthat", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"TSstudio" %in% installed.packages()) {
+    install.packages("TSstudio", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"xts" %in% installed.packages()) {
+    install.packages("xts", repos = "https://stat.ethz.ch/CRAN/")
+  }
+  if (!"zoo" %in% installed.packages()) {
+    install.packages("zoo", repos = "https://stat.ethz.ch/CRAN/")
+  }
 }
