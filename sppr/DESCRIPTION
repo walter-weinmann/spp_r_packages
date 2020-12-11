@@ -14,6 +14,8 @@ RoxygenNote: 7.1.1
 Imports:
     DBI,
     dplyr,
+    pillar,
+    R6,
     RSQLite,
     stringr,
     utils

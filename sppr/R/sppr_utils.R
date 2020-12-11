@@ -76,6 +76,7 @@ create_df_mid_raw <- function(database) {
 #' @param df_tad A dataframe containing transaction data
 #' @import dplyr
 #' @import stringr
+#' @importFrom "utils" "str"
 #' @export
 
 get_distr_year_symbol <- function(df_tad) {
