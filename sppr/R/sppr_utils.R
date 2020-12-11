@@ -209,25 +209,25 @@ sppr_install_librarian <- function() {
 
 sppr_install_pacman <- function() {
 
-  packages <- c("DBI",
-                "devtools",
-                "dplyr",
-                "forecast",
-                "formatR",
-                "ggplot2",
-                "knitr",
-                "lintr",
-                "pillar",
-                "R6",
-                "readr",
-                "rmarkdown",
-                "roxygen2",
-                "RSQLite",
-                "stringr",
-                "testthat",
-                "TSstudio",
-                "xts",
-                "zoo")
+  package_names <- c("DBI",
+                     "devtools",
+                     "dplyr",
+                     "forecast",
+                     "formatR",
+                     "ggplot2",
+                     "knitr",
+                     "lintr",
+                     "pillar",
+                     "R6",
+                     "readr",
+                     "rmarkdown",
+                     "roxygen2",
+                     "RSQLite",
+                     "stringr",
+                     "testthat",
+                     "TSstudio",
+                     "xts",
+                     "zoo")
 
   if (!"pacman" %in% installed.packages()) {
     install.packages("pacman", repos = "https://cran.r-project.org/")
@@ -237,7 +237,7 @@ sppr_install_pacman <- function() {
 
   # pacman::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
-  pacman::p_load(packages)
+  pacman::p_load(package_names)
 }
 
 
