@@ -102,6 +102,26 @@ get_distr_year <- function(df_tad) {
 #' @export
 
 sppr_install <- function() {
+  remove.packages(c("DBI",
+                    "devtools",
+                    "dplyr",
+                    "forecast",
+                    "formatR",
+                    "ggplot2",
+                    "knitr",
+                    "lintr",
+                    "pillar",
+                    "R6",
+                    "readr",
+                    "rmarkdown",
+                    "roxygen2",
+                    "RSQLite",
+                    "stringr",
+                    "testthat",
+                    "TSstudio",
+                    "xts",
+                    "zoo"))
+
   install.packages(c("dplyr"), repos = "https://stat.ethz.ch/CRAN/")
 
   install.packages(c("DBI",
@@ -122,6 +142,4 @@ sppr_install <- function() {
                      "TSstudio",
                      "xts",
                      "zoo"), repos = "https://stat.ethz.ch/CRAN/")
-
-  quit(save = "no")
 }
