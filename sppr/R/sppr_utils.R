@@ -104,39 +104,39 @@ get_distr_year <- function(df_tad) {
 
 sppr_install <- function() {
 
-  package_names <- c("DBI",
-                     "devtools",
-                     "dplyr",
-                     "forecast",
-                     "formatR",
-                     "ggplot2",
-                     "knitr",
-                     "lintr",
-                     "pillar",
-                     "R6",
-                     "readr",
-                     "rmarkdown",
-                     "roxygen2",
-                     "RSQLite",
-                     "stringr",
-                     "testthat",
-                     "TSstudio",
-                     "xts",
-                     "zoo")
+  package_names <- cat(paste(shQuote(c("DBI",
+                                       "devtools",
+                                       "dplyr",
+                                       "forecast",
+                                       "formatR",
+                                       "ggplot2",
+                                       "knitr",
+                                       "lintr",
+                                       "pillar",
+                                       "R6",
+                                       "readr",
+                                       "rmarkdown",
+                                       "roxygen2",
+                                       "RSQLite",
+                                       "stringr",
+                                       "testthat",
+                                       "TSstudio",
+                                       "xts",
+                                       "zoo"),
+                                     type = "cmd"),
+                             collapse = ", "))
 
   if (!"pacman" %in% installed.packages()) {
     install.packages("pacman", repos = "https://cran.r-project.org/")
   }
 
-  pacman:::p_unload(all)
+  pacman::p_unload(all)
 
   pacman:::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
-  pacman:::p_load(cat(paste(shQuote(package_names,
-                                    type = "cmd"),
-                            collapse = ", ")),
-                  install = TRUE,
-                  update = TRUE,
-                  character.only = FALSE
+  pacman::p_load(package_names,
+                 install = TRUE,
+                 update = TRUE,
+                 character.only = FALSE
   )
 }
