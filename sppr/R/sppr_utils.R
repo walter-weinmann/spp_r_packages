@@ -116,6 +116,7 @@ sppr_install <- function() {
                      "rmarkdown",
                      "roxygen2",
                      "RSQLite",
+                     "stringr",
                      "testthat",
                      "TSstudio",
                      "xts",
