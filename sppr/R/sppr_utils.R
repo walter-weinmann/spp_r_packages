@@ -235,7 +235,7 @@ sppr_install_pacman <- function() {
 
   pacman::p_unload(all)
 
-  pacman::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
+  # pacman::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
   pacman::p_load(packages)
 }
