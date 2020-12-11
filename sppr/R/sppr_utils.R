@@ -12,7 +12,9 @@ create_df_eod_raw <- function(database) {
   con <- dbConnect(RSQLite::SQLite(), database)
   RSQLite::initExtension(con)
 
-  df_raw_eod <- dbGetQuery(con, "SELECT substr(date,1,4) year FROM eod_data")
+  df_raw_eod <- dbGetQuery(con, "SELECT date, symbol, exchange, open, high,
+  low, close, volume, adj_open, adj_high, adj_low, adj_close, adj_volume FROM
+   eod_data ORDER BY date, symbol")
 
   dbDisconnect(con)
 
