@@ -2,10 +2,10 @@
 % Please edit documentation in R/sppr_utils.R
 \name{sppr_install}
 \alias{sppr_install}
-\title{Install the required packages manually.}
+\title{Install the required packages via pacman.}
 \usage{
 sppr_install()
 }
 \description{
-Install the required packages manually.
+Install the required packages via pacman.
 }
