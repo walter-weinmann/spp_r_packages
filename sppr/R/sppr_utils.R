@@ -96,14 +96,156 @@ get_distr_year <- function(df_tad) {
 }
 
 
-#' Install the required packages from the Swiss CRAN network.
+#' Install the required packages manually.
 #'
 #' @importFrom utils install.packages
 #' @export
 
 sppr_install <- function() {
 
-  # remove existing packages ===================================================
+  sppr_remove()
+
+  if (!"dplyr" %in% installed.packages()) {
+    install.packages("dplyr", repos = "https://cran.r-project.org")
+  }
+
+  if (!"DBI" %in% installed.packages()) {
+    install.packages("DBI", repos = "https://cran.r-project.org")
+  }
+  if (!"devtools" %in% installed.packages()) {
+    install.packages("devtools", repos = "https://cran.r-project.org")
+  }
+  if (!"forecast" %in% installed.packages()) {
+    install.packages("forecast", repos = "https://cran.r-project.org")
+  }
+  if (!"formatR" %in% installed.packages()) {
+    install.packages("formatR", repos = "https://cran.r-project.org")
+  }
+  if (!"ggplot2" %in% installed.packages()) {
+    install.packages("ggplot2", repos = "https://cran.r-project.org")
+  }
+  if (!"knitr" %in% installed.packages()) {
+    install.packages("knitr", repos = "https://cran.r-project.org")
+  }
+  if (!"lintr" %in% installed.packages()) {
+    install.packages("lintr", repos = "https://cran.r-project.org")
+  }
+  if (!"pillar" %in% installed.packages()) {
+    install.packages("pillar", repos = "https://cran.r-project.org")
+  }
+  if (!"R6" %in% installed.packages()) {
+    install.packages("R6", repos = "https://cran.r-project.org")
+  }
+  if (!"readr" %in% installed.packages()) {
+    install.packages("readr", repos = "https://cran.r-project.org")
+  }
+  if (!"rmarkdown" %in% installed.packages()) {
+    install.packages("rmarkdown", repos = "https://cran.r-project.org")
+  }
+  if (!"roxygen2" %in% installed.packages()) {
+    install.packages("roxygen2", repos = "https://cran.r-project.org")
+  }
+  if (!"RSQLite" %in% installed.packages()) {
+    install.packages("RSQLite", repos = "https://cran.r-project.org")
+  }
+  if (!"stringr" %in% installed.packages()) {
+    install.packages("stringr", repos = "https://cran.r-project.org")
+  }
+  if (!"testthat" %in% installed.packages()) {
+    install.packages("testthat", repos = "https://cran.r-project.org")
+  }
+  if (!"TSstudio" %in% installed.packages()) {
+    install.packages("TSstudio", repos = "https://cran.r-project.org")
+  }
+  if (!"xts" %in% installed.packages()) {
+    install.packages("xts", repos = "https://cran.r-project.org")
+  }
+  if (!"zoo" %in% installed.packages()) {
+    install.packages("zoo", repos = "https://cran.r-project.org")
+  }
+}
+
+
+#' Install the required packages via librarian.
+#'
+#' @importFrom utils install.packages
+#' @export
+
+sppr_install_librarian <- function() {
+
+  sppr_remove()
+
+  if (!"librarian" %in% installed.packages()) {
+    install.packages("librarian", repos = "https://cran.r-project.org")
+  }
+
+  librarian::shelf(DBI,
+                   devtools,
+                   dplyr,
+                   forecast,
+                   formatR,
+                   ggplot2,
+                   knitr,
+                   lintr,
+                   pillar,
+                   R6,
+                   readr,
+                   rmarkdown,
+                   roxygen2,
+                   RSQLite,
+                   stringr,
+                   testthat,
+                   TSstudio,
+                   xts,
+                   zoo)
+}
+
+
+#' Install the required packages via pacman.
+#'
+#' @importFrom utils install.packages
+#' @export
+
+sppr_install_pacman <- function() {
+
+  sppr_remove()
+
+
+  if (!"pacman" %in% installed.packages()) {
+    install.packages("pacman", repos = "https://cran.r-project.org")
+  }
+
+  p_set_cranrepo(default_repo = "http://cran.r-project.org")
+
+  pacman::p_load(DBI,
+                 devtools,
+                 dplyr,
+                 forecast,
+                 formatR,
+                 ggplot2,
+                 knitr,
+                 lintr,
+                 pillar,
+                 R6,
+                 readr,
+                 rmarkdown,
+                 roxygen2,
+                 RSQLite,
+                 stringr,
+                 testthat,
+                 TSstudio,
+                 xts,
+                 zoo)
+}
+
+
+#' Install the required packages manually.
+#'
+#' @importFrom utils remove.packages
+#' @export
+
+sppr_remove <- function() {
+
   if ("DBI" %in% installed.packages()) {
     remove.packages("DBI", .libPaths()[1])
   }
@@ -161,93 +303,6 @@ sppr_install <- function() {
   if ("zoo" %in% installed.packages()) {
     remove.packages("zoo", .libPaths()[1])
   }
-
-  # install missing packages ===================================================
-  if (!"librarian" %in% installed.packages()) {
-    install.packages("librarian", repos = "https://cran.r-project.org")
-  }
-
-  librarian::shelf(DBI,
-                   devtools,
-                   dplyr,
-                   forecast,
-                   formatR,
-                   ggplot2,
-                   knitr,
-                   lintr,
-                   pillar,
-                   R6,
-                   readr,
-                   rmarkdown,
-                   roxygen2,
-                   RSQLite,
-                   stringr,
-                   testthat,
-                   TSstudio,
-                   xts,
-                   zoo)
-
-  # # install missing packages - with priority
-  # ===================================
-  # if (!"dplyr" %in% installed.packages()) {
-  #   install.packages("dplyr", repos = "https://cran.r-project.org")
-  # }
-  #
-  # # install missing packages - without priority
-  # ================================
-  #
-  # if (!"DBI" %in% installed.packages()) {
-  #   install.packages("DBI", repos = "https://cran.r-project.org")
-  # }
-  # if (!"devtools" %in% installed.packages()) {
-  #   install.packages("devtools", repos = "https://cran.r-project.org")
-  # }
-  # if (!"forecast" %in% installed.packages()) {
-  #   install.packages("forecast", repos = "https://cran.r-project.org")
-  # }
-  # if (!"formatR" %in% installed.packages()) {
-  #   install.packages("formatR", repos = "https://cran.r-project.org")
-  # }
-  # if (!"ggplot2" %in% installed.packages()) {
-  #   install.packages("ggplot2", repos = "https://cran.r-project.org")
-  # }
-  # if (!"knitr" %in% installed.packages()) {
-  #   install.packages("knitr", repos = "https://cran.r-project.org")
-  # }
-  # if (!"lintr" %in% installed.packages()) {
-  #   install.packages("lintr", repos = "https://cran.r-project.org")
-  # }
-  # if (!"pillar" %in% installed.packages()) {
-  #   install.packages("pillar", repos = "https://cran.r-project.org")
-  # }
-  # if (!"R6" %in% installed.packages()) {
-  #   install.packages("R6", repos = "https://cran.r-project.org")
-  # }
-  # if (!"readr" %in% installed.packages()) {
-  #   install.packages("readr", repos = "https://cran.r-project.org")
-  # }
-  # if (!"rmarkdown" %in% installed.packages()) {
-  #   install.packages("rmarkdown", repos = "https://cran.r-project.org")
-  # }
-  # if (!"roxygen2" %in% installed.packages()) {
-  #   install.packages("roxygen2", repos = "https://cran.r-project.org")
-  # }
-  # if (!"RSQLite" %in% installed.packages()) {
-  #   install.packages("RSQLite", repos = "https://cran.r-project.org")
-  # }
-  # if (!"stringr" %in% installed.packages()) {
-  #   install.packages("stringr", repos = "https://cran.r-project.org")
-  # }
-  # if (!"testthat" %in% installed.packages()) {
-  #   install.packages("testthat", repos = "https://cran.r-project.org")
-  # }
-  # if (!"TSstudio" %in% installed.packages()) {
-  #   install.packages("TSstudio", repos = "https://cran.r-project.org")
-  # }
-  # if (!"xts" %in% installed.packages()) {
-  #   install.packages("xts", repos = "https://cran.r-project.org")
-  # }
-  # if (!"zoo" %in% installed.packages()) {
-  #   install.packages("zoo", repos = "https://cran.r-project.org")
-  # }
 }
+
+
