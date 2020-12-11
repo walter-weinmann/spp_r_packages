@@ -35,6 +35,40 @@ create_df_eod_raw <- function(database) {
   df_raw_eod
 }
 
+#' Create a data frame containing the raw market index data.
+#'
+#' @param database Directory path and file name of the database
+#' @return A data frame containing the raw market index data
+#' @import RSQLite
+#' @export
+
+create_df_mid_raw <- function(database) {
+  con <- dbConnect(RSQLite::SQLite(), database)
+  RSQLite::initExtension(con)
+
+  df_raw_mid <- dbGetQuery(con, "
+  SELECT date,
+         symbol,
+         open,
+         high,
+         low,
+         close,
+         volume,
+         open_adj_orig adj_open,
+         high_adj_orig adj_high,
+         low_adj_orig adj_low,
+         close_adj_orig adj_close,
+         volume_adj_orig adj_volume
+    FROM mid_data
+   ORDER BY date,
+            symbol")
+
+  dbDisconnect(con)
+
+  df_raw_mid
+}
+
+
 #' Install the required packages from the Swiss CRAN network.
 #'
 #' @importFrom utils install.packages
