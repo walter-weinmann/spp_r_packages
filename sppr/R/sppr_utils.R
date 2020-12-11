@@ -21,11 +21,11 @@ create_df_eod_raw <- function(database) {
          low,
          close,
          volume,
-         open_adj,
-         high_adj,
-         low_adj,
-         close_adj,
-         volume_adj
+         open_adj_orig adj_open,
+         high_adj_orig adj_high,
+         low_adj_orig adj_low,
+         close_adj_orig adj_close,
+         volume_adj_orig adj_volume
     FROM eod_data
    ORDER BY date,
             symbol")
