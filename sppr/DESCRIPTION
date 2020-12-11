@@ -13,5 +13,7 @@ BugReports: https://github.com/walter-weinmann/spp_r_packages/issues
 RoxygenNote: 7.1.1
 Imports:
     DBI,
+    dplyr,
     RSQLite,
+    stringr,
     utils

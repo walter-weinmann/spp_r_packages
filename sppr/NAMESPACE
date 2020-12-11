@@ -2,6 +2,9 @@
 
 export(create_df_eod_raw)
 export(create_df_mid_raw)
+export(get_distr_year_symbol)
 export(sppr_install)
 import(RSQLite)
+import(dplyr)
+import(stringr)
 importFrom(utils,install.packages)

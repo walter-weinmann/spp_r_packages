@@ -1,6 +1,7 @@
 # Title : sppr_utils Objective : Utility functionality.
 # Created by: Walter Weinmann Created on: 16.11.2020
 
+
 #' Create a data frame containing the raw end-of-day data.
 #'
 #' @param database Directory path and file name of the database
@@ -35,6 +36,7 @@ create_df_eod_raw <- function(database) {
   df_raw_eod
 }
 
+
 #' Create a data frame containing the raw market index data.
 #'
 #' @param database Directory path and file name of the database
@@ -66,6 +68,21 @@ create_df_mid_raw <- function(database) {
   dbDisconnect(con)
 
   df_raw_mid
+}
+
+
+#' Distribution of the volume of data on year and symbol.
+#'
+#' @param df_tad A dataframe containing transaction data
+#' @import dplyr
+#' @import stringr
+#' @export
+
+get_distr_year_symbol <- function(df_tad) {
+  df_date_symbol <- data.frame(str_sub(df_tad$date, 1, 4), df_tad$symbol)
+  colnames(df_date_symbol) <- c("year", "symbol")
+  str(df_date_symbol)
+
 }
 
 
