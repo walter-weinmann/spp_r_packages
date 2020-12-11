@@ -102,6 +102,7 @@ get_distr_year <- function(df_tad) {
 #' @export
 
 sppr_install <- function() {
+
   # remove existing packages ===================================================
   if ("DBI" %in% installed.packages()) {
     remove.packages("DBI", .libPaths()[1])
@@ -161,65 +162,92 @@ sppr_install <- function() {
     remove.packages("zoo", .libPaths()[1])
   }
 
-  # install missing packages - with priority ===================================
-  if (!"dplyr" %in% installed.packages()) {
-    install.packages("dplyr", repos = "https://stat.ethz.ch/CRAN/")
+  # install missing packages ===================================================
+  if (!"librarian" %in% installed.packages()) {
+    install.packages("librarian", repos = "https://stat.ethz.ch/CRAN/")
   }
 
-  # install missing packages - without priority ================================
+  librarian::shelf(DBI,
+                   devtools,
+                   dplyr,
+                   forecast,
+                   formatR,
+                   ggplot2,
+                   knitr,
+                   lintr,
+                   pillar,
+                   R6,
+                   readr,
+                   rmarkdown,
+                   roxygen2,
+                   RSQLite,
+                   stringr,
+                   testthat,
+                   TSstudio,
+                   xts,
+                   zoo)
 
-  if (!"DBI" %in% installed.packages()) {
-    install.packages("DBI", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"devtools" %in% installed.packages()) {
-    install.packages("devtools", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"forecast" %in% installed.packages()) {
-    install.packages("forecast", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"formatR" %in% installed.packages()) {
-    install.packages("formatR", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"ggplot2" %in% installed.packages()) {
-    install.packages("ggplot2", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"knitr" %in% installed.packages()) {
-    install.packages("knitr", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"lintr" %in% installed.packages()) {
-    install.packages("lintr", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"pillar" %in% installed.packages()) {
-    install.packages("pillar", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"R6" %in% installed.packages()) {
-    install.packages("R6", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"readr" %in% installed.packages()) {
-    install.packages("readr", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"rmarkdown" %in% installed.packages()) {
-    install.packages("rmarkdown", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"roxygen2" %in% installed.packages()) {
-    install.packages("roxygen2", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"RSQLite" %in% installed.packages()) {
-    install.packages("RSQLite", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"stringr" %in% installed.packages()) {
-    install.packages("stringr", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"testthat" %in% installed.packages()) {
-    install.packages("testthat", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"TSstudio" %in% installed.packages()) {
-    install.packages("TSstudio", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"xts" %in% installed.packages()) {
-    install.packages("xts", repos = "https://stat.ethz.ch/CRAN/")
-  }
-  if (!"zoo" %in% installed.packages()) {
-    install.packages("zoo", repos = "https://stat.ethz.ch/CRAN/")
-  }
+  # # install missing packages - with priority
+  # ===================================
+  # if (!"dplyr" %in% installed.packages()) {
+  #   install.packages("dplyr", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  #
+  # # install missing packages - without priority
+  # ================================
+  #
+  # if (!"DBI" %in% installed.packages()) {
+  #   install.packages("DBI", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"devtools" %in% installed.packages()) {
+  #   install.packages("devtools", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"forecast" %in% installed.packages()) {
+  #   install.packages("forecast", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"formatR" %in% installed.packages()) {
+  #   install.packages("formatR", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"ggplot2" %in% installed.packages()) {
+  #   install.packages("ggplot2", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"knitr" %in% installed.packages()) {
+  #   install.packages("knitr", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"lintr" %in% installed.packages()) {
+  #   install.packages("lintr", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"pillar" %in% installed.packages()) {
+  #   install.packages("pillar", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"R6" %in% installed.packages()) {
+  #   install.packages("R6", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"readr" %in% installed.packages()) {
+  #   install.packages("readr", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"rmarkdown" %in% installed.packages()) {
+  #   install.packages("rmarkdown", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"roxygen2" %in% installed.packages()) {
+  #   install.packages("roxygen2", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"RSQLite" %in% installed.packages()) {
+  #   install.packages("RSQLite", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"stringr" %in% installed.packages()) {
+  #   install.packages("stringr", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"testthat" %in% installed.packages()) {
+  #   install.packages("testthat", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"TSstudio" %in% installed.packages()) {
+  #   install.packages("TSstudio", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"xts" %in% installed.packages()) {
+  #   install.packages("xts", repos = "https://stat.ethz.ch/CRAN/")
+  # }
+  # if (!"zoo" %in% installed.packages()) {
+  #   install.packages("zoo", repos = "https://stat.ethz.ch/CRAN/")
+  # }
 }
