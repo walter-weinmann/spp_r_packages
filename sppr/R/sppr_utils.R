@@ -157,9 +157,10 @@ sppr_install <- function() {
   if (!"TSstudio" %in% installed.packages()) {
     install.packages("TSstudio", repos = "https://cran.r-project.org")
   }
-  if (!"xts" %in% installed.packages()) {
-    install.packages("xts", repos = "https://cran.r-project.org")
-  }
+  # wwe
+  # if (!"xts" %in% installed.packages()) {
+  #   install.packages("xts", repos = "https://cran.r-project.org")
+  # }
   if (!"zoo" %in% installed.packages()) {
     install.packages("zoo", repos = "https://cran.r-project.org")
   }
