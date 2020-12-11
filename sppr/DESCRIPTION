@@ -1,11 +1,16 @@
 Package: sppr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Evaluation of the Raw Data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Walter Weinmann [aut, cre]
+Maintainer: Walter Weinmann <walter@konnexions.ch>
+Description: This package evaluates the raw data from marketstack.
+License: use_proprietary_license(Konnexions Public License (KX-PL))
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/walter-weinmann/spp_r_packages
+BugReports: https://github.com/walter-weinmann/spp_r_packages/issues
+Imports:
+    dplyr,
+    utils
+RoxygenNote: 7.1.1

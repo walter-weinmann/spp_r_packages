@@ -1,6 +1,3 @@
-Sys.setenv('_R_CHECK_LICENSE_' = FALSE)
-Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
-
 # Title : sppr_utils Objective : Utility functionality.
 # Created by: Walter Weinmann Created on: 16.11.2020
 
