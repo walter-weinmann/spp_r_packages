@@ -102,25 +102,25 @@ get_distr_year <- function(df_tad) {
 #' @export
 
 sppr_install <- function() {
-  remove.packages(c("DBI",
-                    "devtools",
-                    "dplyr",
-                    "forecast",
-                    "formatR",
-                    "ggplot2",
-                    "knitr",
-                    "lintr",
-                    "pillar",
-                    "R6",
-                    "readr",
-                    "rmarkdown",
-                    "roxygen2",
-                    "RSQLite",
-                    "stringr",
-                    "testthat",
-                    "TSstudio",
-                    "xts",
-                    "zoo"))
+  if ("DBI" %in% installed.packages()) remove.packages("DBI")
+  if ("devtools" %in% installed.packages()) remove.packages("devtools")
+  if ("dplyr" %in% installed.packages()) remove.packages("dplyr")
+  if ("forecast" %in% installed.packages()) remove.packages("forecast")
+  if ("formatR" %in% installed.packages()) remove.packages("formatR")
+  if ("ggplot2" %in% installed.packages()) remove.packages("ggplot2")
+  if ("knitr" %in% installed.packages()) remove.packages("knitr")
+  if ("lintr" %in% installed.packages()) remove.packages("lintr")
+  if ("pillar" %in% installed.packages()) remove.packages("pillar")
+  if ("R6" %in% installed.packages()) remove.packages("R6")
+  if ("readr" %in% installed.packages()) remove.packages("readr")
+  if ("rmarkdown" %in% installed.packages()) remove.packages("rmarkdown")
+  if ("roxygen2" %in% installed.packages()) remove.packages("roxygen2")
+  if ("RSQLite" %in% installed.packages()) remove.packages("RSQLite")
+  if ("stringr" %in% installed.packages()) remove.packages("stringr")
+  if ("testthat" %in% installed.packages()) remove.packages("testthat")
+  if ("TSstudio" %in% installed.packages()) remove.packages("TSstudio")
+  if ("xts" %in% installed.packages()) remove.packages("xts")
+  if ("zoo" %in% installed.packages()) remove.packages("zoo")
 
   install.packages(c("dplyr"), repos = "https://stat.ethz.ch/CRAN/")
 
