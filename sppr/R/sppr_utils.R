@@ -32,7 +32,7 @@ create_df_eod_raw <- function(database) {
          volume_adj_orig adj_volume
     FROM eod_data
    ORDER BY date,
-            symbol", .libPaths()[1])
+            symbol")
 
   print("400")
   dbDisconnect(con)
@@ -68,7 +68,7 @@ create_df_mid_raw <- function(database) {
          volume_adj_orig adj_volume
     FROM mid_data
    ORDER BY date,
-            symbol", .libPaths()[1])
+            symbol")
 
   dbDisconnect(con)
 
@@ -96,7 +96,7 @@ get_distr_symbol <- function(df_tad) {
 
 get_distr_year <- function(df_tad) {
   df_year <- data.frame(str_sub(df_tad$date, 1, 4))
-  colnames(df_year) <- c("year", .libPaths()[1])
+  colnames(df_year) <- c("year")
   count(group_by(df_year$year))
 }
 
