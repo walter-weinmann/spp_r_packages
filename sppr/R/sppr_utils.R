@@ -10,12 +10,9 @@
 #' @export
 
 create_df_eod_raw <- function(database) {
-  print("100")
   con <- dbConnect(RSQLite::SQLite(), database)
-  print("200")
   RSQLite::initExtension(con)
 
-  print("300")
   df_raw_eod <- dbGetQuery(con, "
   SELECT date,
          symbol,
@@ -34,10 +31,8 @@ create_df_eod_raw <- function(database) {
    ORDER BY date,
             symbol")
 
-  print("400")
   dbDisconnect(con)
 
-  print("500")
   df_raw_eod
 }
 
@@ -83,7 +78,7 @@ create_df_mid_raw <- function(database) {
 #' @export
 
 get_distr_symbol <- function(df_tad) {
-  count(group_by(df_tad$symbol))
+  count(dplyr::group_by(df_tad$symbol))
 }
 
 
@@ -97,7 +92,7 @@ get_distr_symbol <- function(df_tad) {
 get_distr_year <- function(df_tad) {
   df_year <- data.frame(str_sub(df_tad$date, 1, 4))
   colnames(df_year) <- c("year")
-  count(group_by(df_year$year))
+  count(dplyr::group_by(df_year$year))
 }
 
 
