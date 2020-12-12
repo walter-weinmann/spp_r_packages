@@ -104,55 +104,63 @@ get_distr_year <- function(df_tad) {
 
 sppr_install <- function() {
 
-  print("1. Step: Constructuing character vector
-  <==============================")
-
-  package_names <- cat(paste(c("DBI",
-                               "devtools",
-                               "dplyr",
-                               "forecast",
-                               "formatR",
-                               "ggplot2",
-                               "knitr",
-                               "lintr",
-                               "pillar",
-                               "R6",
-                               "readr",
-                               "rmarkdown",
-                               "roxygen2",
-                               "RSQLite",
-                               "stringr",
-                               "testthat",
-                               "TSstudio",
-                               "xts",
-                               "zoo"),
-                             collapse = ", "))
-
-  print(package_names)
-
-  print("2. Step: Install pacman
+  print("1. Step: Install pacman
   <==============================================")
 
   if (!"pacman" %in% installed.packages()) {
     install.packages("pacman", repos = "https://cran.r-project.org/")
   }
 
-  print("3. Step: Delete packages
+  print("2. Step: Delete packages
   <=============================================")
 
-  pacman::p_delete(package_names,
-                   character.only = FALSE
+  pacman::p_delete(DBI,
+                   devtools,
+                   dplyr,
+                   forecast,
+                   formatR,
+                   ggplot2,
+                   knitr,
+                   lintr,
+                   pillar,
+                   R6,
+                   readr,
+                   rmarkdown,
+                   roxygen2,
+                   RSQLite,
+                   stringr,
+                   testthat,
+                   TSstudio,
+                   xts,
+                   zoo
   )
 
-  print("4. Step: Setting CRAN Repoitory
+  print("3. Step: Setting CRAN Repoitory
   <======================================")
 
   pacman:::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
-  print("5. Step: Install packages
+  print("4. Step: Install packages
   <============================================")
 
-  pacman::p_install(package_names,
-                    character.only = FALSE
+  pacman::p_install(DBI,
+                    devtools,
+                    dplyr,
+                    forecast,
+                    formatR,
+                    ggplot2,
+                    knitr,
+                    lintr,
+                    pillar,
+                    R6,
+                    readr,
+                    rmarkdown,
+                    roxygen2,
+                    RSQLite,
+                    stringr,
+                    testthat,
+                    TSstudio,
+                    xts,
+                    zoo
   )
 }
