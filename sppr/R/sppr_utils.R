@@ -104,15 +104,13 @@ get_distr_year <- function(df_tad) {
 
 sppr_install <- function() {
 
-  print("1. Step: Install pacman
-  <==============================================")
+  print("1. Step: Install pacman <============================================")
 
   if (!"pacman" %in% installed.packages()) {
     install.packages("pacman", repos = "https://cran.r-project.org/")
   }
 
-  print("2. Step: Delete packages
-  <=============================================")
+  print("2. Step: Delete packages <===========================================")
 
   pacman::p_unload(DBI,
                    devtools,
@@ -136,8 +134,7 @@ sppr_install <- function() {
                    quiet = TRUE
   )
 
-  print("3. Step: Verify packages
-  <=============================================")
+  print("3. Step: Verify packages <===========================================")
 
   pacman::p_loaded(DBI,
                    devtools,
@@ -157,16 +154,14 @@ sppr_install <- function() {
                    testthat,
                    TSstudio,
                    xts,
-                   zoo,
-                   install = TRUE
+                   zoo
   )
-  print("4. Step: Setting CRAN Repoitory
-  <======================================")
+
+  print("4. Step: Setting CRAN Repoitory <====================================")
 
   pacman:::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
-  print("5. Step: Install packages
-  <============================================")
+  print("5. Step: Install packages <==========================================")
 
   pacman::p_load(DBI,
                  devtools,
@@ -191,8 +186,7 @@ sppr_install <- function() {
                  update = TRUE
   )
 
-  print("6. Step: Verify packages
-  <=============================================")
+  print("6. Step: Verify packages <===========================================")
 
   pacman::p_loaded(DBI,
                    devtools,
@@ -212,7 +206,6 @@ sppr_install <- function() {
                    testthat,
                    TSstudio,
                    xts,
-                   zoo,
-                   install = TRUE
+                   zoo
   )
 }
