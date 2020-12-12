@@ -107,25 +107,26 @@ sppr_install <- function() {
   print("1. Step: Constructuing character vector
   <==============================")
 
-  package_names <- c("DBI",
-                     "devtools",
-                     "dplyr",
-                     "forecast",
-                     "formatR",
-                     "ggplot2",
-                     "knitr",
-                     "lintr",
-                     "pillar",
-                     "R6",
-                     "readr",
-                     "rmarkdown",
-                     "roxygen2",
-                     "RSQLite",
-                     "stringr",
-                     "testthat",
-                     "TSstudio",
-                     "xts",
-                     "zoo")
+  package_names <- cat(paste(c("DBI",
+                               "devtools",
+                               "dplyr",
+                               "forecast",
+                               "formatR",
+                               "ggplot2",
+                               "knitr",
+                               "lintr",
+                               "pillar",
+                               "R6",
+                               "readr",
+                               "rmarkdown",
+                               "roxygen2",
+                               "RSQLite",
+                               "stringr",
+                               "testthat",
+                               "TSstudio",
+                               "xts",
+                               "zoo"),
+                             collapse = ", "))
 
   print(package_names)
 
