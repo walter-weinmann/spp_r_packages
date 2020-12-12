@@ -10,9 +10,12 @@
 #' @export
 
 create_df_eod_raw <- function(database) {
+  print("100")
   con <- dbConnect(RSQLite::SQLite(), database)
+  print("200")
   RSQLite::initExtension(con)
 
+  print("300")
   df_raw_eod <- dbGetQuery(con, "
   SELECT date,
          symbol,
@@ -31,8 +34,10 @@ create_df_eod_raw <- function(database) {
    ORDER BY date,
             symbol", .libPaths()[1])
 
+  print("400")
   dbDisconnect(con)
 
+  print("500")
   df_raw_eod
 }
 
