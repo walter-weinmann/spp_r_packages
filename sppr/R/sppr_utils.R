@@ -165,4 +165,29 @@ sppr_install <- function() {
                  #                zoo,
                  install = TRUE
   )
+
+  print("5. Step: Verify packages
+  <=============================================")
+
+  pacman::p_loaded(DBI,
+                   devtools,
+                   dplyr,
+                   forecast,
+                   formatR,
+                   ggplot2,
+                   knitr,
+                   lintr,
+                   pillar,
+                   R6,
+                   readr,
+                   rmarkdown,
+                   roxygen2,
+                   RSQLite,
+                   stringr,
+                   testthat,
+                   TSstudio,
+                   xts,
+                   zoo,
+                   install = TRUE
+  )
 }
