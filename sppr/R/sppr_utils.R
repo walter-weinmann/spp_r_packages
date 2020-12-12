@@ -114,7 +114,7 @@ sppr_install <- function() {
   print("2. Step: Delete packages
   <=============================================")
 
-  pacman::p_delete(DBI,
+  pacman::p_unload(DBI,
                    devtools,
                    dplyr,
                    forecast,
@@ -136,12 +136,36 @@ sppr_install <- function() {
                    quiet = TRUE
   )
 
-  print("3. Step: Setting CRAN Repoitory
+  print("3. Step: Verify packages
+  <=============================================")
+
+  pacman::p_loaded(DBI,
+                   devtools,
+                   dplyr,
+                   forecast,
+                   formatR,
+                   ggplot2,
+                   knitr,
+                   lintr,
+                   pillar,
+                   R6,
+                   readr,
+                   rmarkdown,
+                   roxygen2,
+                   RSQLite,
+                   stringr,
+                   testthat,
+                   TSstudio,
+                   xts,
+                   zoo,
+                   install = TRUE
+  )
+  print("4. Step: Setting CRAN Repoitory
   <======================================")
 
   pacman:::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
-  print("4. Step: Install packages
+  print("5. Step: Install packages
   <============================================")
 
   pacman::p_load(DBI,
@@ -163,10 +187,11 @@ sppr_install <- function() {
                  TSstudio,
                  xts,
                  zoo,
-                 install = TRUE
+                 install = TRUE,
+                 update = TRUE
   )
 
-  print("5. Step: Verify packages
+  print("6. Step: Verify packages
   <=============================================")
 
   pacman::p_loaded(DBI,
