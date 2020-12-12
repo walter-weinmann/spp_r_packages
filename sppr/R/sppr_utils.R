@@ -130,13 +130,13 @@ sppr_install <- function() {
     install.packages("pacman", repos = "https://cran.r-project.org/")
   }
 
-  pacman::p_unload(all)
+  pacman::p_delete(package_names,
+                   character.only = FALSE
+  )
 
   pacman:::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
-  pacman::p_load(package_names,
-                 install = TRUE,
-                 update = TRUE,
-                 character.only = FALSE
+  pacman::p_install(package_names,
+                    character.only = FALSE
   )
 }
