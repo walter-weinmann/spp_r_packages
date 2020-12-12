@@ -110,58 +110,11 @@ sppr_install <- function() {
     install.packages("pacman", repos = "https://cran.r-project.org/")
   }
 
-  print("2. Step: Delete packages <===========================================")
-
-  pacman::p_unload(DBI,
-                   devtools,
-                   dplyr,
-                   forecast,
-                   formatR,
-                   ggplot2,
-                   knitr,
-                   lintr,
-                   pillar,
-                   R6,
-                   readr,
-                   rmarkdown,
-                   roxygen2,
-                   RSQLite,
-                   stringr,
-                   testthat,
-                   TSstudio,
-                   xts,
-                   zoo,
-                   quiet = TRUE
-  )
-
-  print("3. Step: Verify packages <===========================================")
-
-  pacman::p_loaded(DBI,
-                   devtools,
-                   dplyr,
-                   forecast,
-                   formatR,
-                   ggplot2,
-                   knitr,
-                   lintr,
-                   pillar,
-                   R6,
-                   readr,
-                   rmarkdown,
-                   roxygen2,
-                   RSQLite,
-                   stringr,
-                   testthat,
-                   TSstudio,
-                   xts,
-                   zoo
-  )
-
-  print("4. Step: Setting CRAN Repoitory <====================================")
+  print("2. Step: Setting CRAN Repoitory <====================================")
 
   pacman:::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
-  print("5. Step: Install packages <==========================================")
+  print("3. Step: Load and install or update packages <=======================")
 
   pacman::p_load(DBI,
                  devtools,
@@ -186,7 +139,7 @@ sppr_install <- function() {
                  update = TRUE
   )
 
-  print("6. Step: Verify packages <===========================================")
+  print("4. Step: Verify packages <===========================================")
 
   pacman::p_loaded(DBI,
                    devtools,
