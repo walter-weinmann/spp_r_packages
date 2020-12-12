@@ -132,7 +132,8 @@ sppr_install <- function() {
                    testthat,
                    TSstudio,
                    xts,
-                   zoo
+                   zoo,
+                   quiet = TRUE
   )
 
   print("3. Step: Setting CRAN Repoitory
@@ -145,23 +146,23 @@ sppr_install <- function() {
 
   pacman::p_load(DBI,
                  devtools,
-                 dplyr,
-                 forecast,
+#                dplyr,
+#                forecast,
                  formatR,
-                 ggplot2,
-                 knitr,
+#                ggplot2,
+#                knitr,
                  lintr,
                  pillar,
-                 R6,
+#                R6,
                  readr,
-                 rmarkdown,
-                 roxygen2,
-                 RSQLite,
+#                rmarkdown,
+#                roxygen2,
+#                RSQLite,
                  stringr,
-                 testthat,
+#                testthat,
                  TSstudio,
-                 xts,
-                 zoo,
+#                xts,
+#                zoo,
                  install = TRUE
   )
 }
