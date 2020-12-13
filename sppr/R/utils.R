@@ -45,11 +45,7 @@ install <- function() {
 
   print("2. Step: Show the installation result <==============================")
 
-  sapply(required_packages(c("devtools", "packrat")),
-         function(x) {
-           x %in% installed.packages()
-         }
-  )
+  show_installed()
 }
 
 # ==============================================================================
@@ -83,4 +79,18 @@ required_packages <- function(add_ons = vector()) {
                 "xts",
                 "zoo"),
               after = length(add_ons)))
+}
+
+# ==============================================================================
+#' Show tht installed packages.
+#'
+#' @export
+# ------------------------------------------------------------------------------
+
+show_installed <- function() {
+  sapply(required_packages(c("devtools", "packrat")),
+         function(x) {
+           x %in% installed.packages()
+         }
+  )
 }
