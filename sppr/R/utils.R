@@ -41,6 +41,7 @@ sppr_install <- function() {
                  "knitr",
                  "lintr",
                  "magrittr",
+                 "packrat",
                  "pillar",
                  "R6",
                  "readr",
@@ -56,7 +57,7 @@ sppr_install <- function() {
                  update = TRUE
   )
 
-  print("5. Step: Verify packages <===========================================")
+  print("5. Step: Verify loaded packages <====================================")
 
   pacman::p_loaded("assertive",
                    "data.table",
@@ -70,6 +71,7 @@ sppr_install <- function() {
                    "knitr",
                    "lintr",
                    "magrittr",
+                   "packrat",
                    "pillar",
                    "R6",
                    "readr",
@@ -83,5 +85,11 @@ sppr_install <- function() {
                    "zoo"
   )
 
+  print("6. Step: Packrat snapshot <==========================================")
+
   packrat::snapshot()
+
+  print("7. Step: Packrat status <============================================")
+
+  packrat::status()
 }
