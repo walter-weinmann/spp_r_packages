@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{required_packages}
 \alias{required_packages}
-\title{Install the required packages.}
+\title{Definition of the required packages.}
 \usage{
 required_packages(add_ons = vector())
 }
@@ -10,5 +10,5 @@ required_packages(add_ons = vector())
 \item{add_ons}{Character vvector containing additional pacckage names.}
 }
 \description{
-Install the required packages.
+Definition of the required packages.
 }
