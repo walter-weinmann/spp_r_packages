@@ -41,11 +41,10 @@ install <- function() {
     }
   }
 
-  print(sapply(sppr::required_packages(),
-               function(x) {
-                 x %in% installed.packages()
-               }
-  )
+  sapply(sppr::required_packages(),
+         function(x) {
+           x %in% installed.packages()
+         }
   )
 }
 
