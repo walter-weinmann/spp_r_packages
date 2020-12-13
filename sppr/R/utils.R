@@ -121,6 +121,7 @@ install_with_pacman <- function() {
 #' Install the required packages.
 #'
 #' @param add_ons Character vvector containing additional pacckage names.
+#' @export
 # ------------------------------------------------------------------------------
 
 required_packages <- function(add_ons = vector()) {
