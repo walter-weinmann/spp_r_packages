@@ -40,6 +40,8 @@ install <- function() {
       install.packages(package, repos = "https://cran.r-project.org/")
     }
   }
+
+  sapply(required_packages(), function(x) { installed.packages(x) })
 }
 
 # ==============================================================================
