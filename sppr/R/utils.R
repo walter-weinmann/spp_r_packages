@@ -20,7 +20,7 @@ init_packrat <- function() {
 
   print("2. Step: Initialize packrat <========================================")
 
-  packrat::init(options = list(local.repos = "~/lib/R"))
+  packrat::init()
 
   print("3. Step: Terminate R <===============================================")
 
