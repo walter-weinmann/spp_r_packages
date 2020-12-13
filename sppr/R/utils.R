@@ -22,11 +22,9 @@ init_packrat <- function() {
 
   packrat::init(options = list(local.repos = "~/lib/R"))
 
-  print("1. Step: Restart R <=================================================")
+  print("3. Step: Terminate R <===============================================")
 
-  save.image("tmp/restart.data")
   quit(save = "no")
-  load("tmp/restart.data")
 }
 
 # ==============================================================================
