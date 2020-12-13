@@ -37,7 +37,7 @@ init_packrat <- function() {
 install <- function() {
   print("1. Step: Install the required packages <=============================")
 
-  for (package in sppr::required_packages()) {
+  for (package in required_packages()) {
     if (!package %in% installed.packages()) {
       install.packages(package, repos = "https://cran.r-project.org/")
     }
@@ -45,7 +45,7 @@ install <- function() {
 
   print("2. Step: Show the installation result <==============================")
 
-  sapply(sppr::required_packages(c("devtools", "packrat")),
+  sapply(required_packages(c("devtools", "packrat")),
          function(x) {
            x %in% installed.packages()
          }
