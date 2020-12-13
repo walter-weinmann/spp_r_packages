@@ -44,32 +44,32 @@ sppr_install_librarian <- function() {
                    cran_repo = "http://cran.r-project.org/"
   )
 
-  print("4. Step: Verify loaded packages <====================================")
+  print("3. Step: Verify loaded packages <====================================")
 
-  librarian::check_pkg_status("assertive",
-                              "data.table",
-                              "DBI",
-                              "devtools",
-                              "dplyr",
-                              "forecast",
-                              "formatR",
-                              "ggplot2",
-                              "installr",
-                              "knitr",
-                              "librarian",
-                              "lintr",
-                              "magrittr",
-                              "pillar",
-                              "R6",
-                              "readr",
-                              "rmarkdown",
-                              "roxygen2",
-                              "RSQLite",
-                              "stringr",
-                              "testthat",
-                              "TSstudio",
-                              "xts",
-                              "zoo"
+  librarian:::check_pkg_status("assertive",
+                               "data.table",
+                               "DBI",
+                               "devtools",
+                               "dplyr",
+                               "forecast",
+                               "formatR",
+                               "ggplot2",
+                               "installr",
+                               "knitr",
+                               "librarian",
+                               "lintr",
+                               "magrittr",
+                               "pillar",
+                               "R6",
+                               "readr",
+                               "rmarkdown",
+                               "roxygen2",
+                               "RSQLite",
+                               "stringr",
+                               "testthat",
+                               "TSstudio",
+                               "xts",
+                               "zoo"
   )
 }
 
