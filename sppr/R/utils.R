@@ -10,17 +10,24 @@
 
 sppr_install <- function() {
 
-  print("1. Step: Install pacman <============================================")
+  print("1. Step: Install packrat <===========================================")
+
+  if (!"packrat" %in% installed.packages()) {
+    install.packages("packrat", repos = "https://cran.r-project.org/")
+    packrat::init()
+  }
+
+  print("2. Step: Install pacman <============================================")
 
   if (!"pacman" %in% installed.packages()) {
     install.packages("pacman", repos = "https://cran.r-project.org/")
   }
 
-  print("2. Step: Setting CRAN Repoitory <====================================")
+  print("3. Step: Setting CRAN Repoitory <====================================")
 
   pacman:::p_set_cranrepo(default_repo = "http://cran.r-project.org/")
 
-  print("3. Step: Load and install or update packages <=======================")
+  print("4. Step: Load and install or update packages <=======================")
 
   pacman::p_load("assertive",
                  "data.table",
@@ -49,7 +56,7 @@ sppr_install <- function() {
                  update = TRUE
   )
 
-  print("4. Step: Verify packages <===========================================")
+  print("5. Step: Verify packages <===========================================")
 
   pacman::p_loaded("assertive",
                    "data.table",
@@ -75,4 +82,6 @@ sppr_install <- function() {
                    "xts",
                    "zoo"
   )
+
+  packrat::snapshot()
 }
