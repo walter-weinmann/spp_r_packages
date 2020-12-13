@@ -35,14 +35,18 @@ init_packrat <- function() {
 # ------------------------------------------------------------------------------
 
 install <- function() {
-  for (package in required_packages()) {
+  for (package in sppr::required_packages()) {
     if (!package %in% installed.packages()) {
       install.packages(package, repos = "https://cran.r-project.org/")
     }
   }
 
-  print(sapply(required_packages(), function(x) { x %in% installed.packages()
-  }))
+  print(sapply(sppr::required_packages(),
+               function(x) {
+                 x %in% installed.packages()
+               }
+  )
+  )
 }
 
 # ==============================================================================
