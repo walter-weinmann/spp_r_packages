@@ -41,7 +41,7 @@ install <- function() {
     }
   }
 
-  sapply(required_packages(), function(x) { installed.packages(x) })
+  print(sapply(required_packages(), function(x) { installed.packages(x) }))
 }
 
 # ==============================================================================
