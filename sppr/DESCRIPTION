@@ -13,9 +13,6 @@ BugReports: https://github.com/walter-weinmann/spp_r_packages/issues
 RoxygenNote: 7.1.1
 Imports:
     dplyr,
-    librarian,
-    packrat,
-    pacman,
     RSQLite,
     stringr,
     utils

@@ -84,8 +84,6 @@ required_packages <- function(add_ons = vector()) {
 # ==============================================================================
 #' Show the status of the required packages.
 #'
-#' @param library Character vector describing the location of R library
-#'                trees to search through
 #' @export
 # ------------------------------------------------------------------------------
 

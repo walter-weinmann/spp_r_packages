@@ -6,10 +6,6 @@
 \usage{
 show_installed()
 }
-\arguments{
-\item{library}{Character vector describing the location of R library
-trees to search through}
-}
 \description{
 Show the status of the required packages.
 }
