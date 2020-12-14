@@ -39,7 +39,7 @@ init_packrat <- function() {
 #' @export
 # ------------------------------------------------------------------------------
 
-install_required <- function(library = "packrat/lib") {
+install_required <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
   print("1. Step: Install the required packages <=============================")
 
   for (package in required_packages()) {
@@ -69,7 +69,7 @@ install_required <- function(library = "packrat/lib") {
 #' @export
 # ------------------------------------------------------------------------------
 
-remove_required <- function(library = "packrat/lib") {
+remove_required <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
   print("1. Step: Remove the required packages <==============================")
 
   for (package in required_packages()) {
@@ -131,7 +131,7 @@ required_packages <- function(add_ons = vector()) {
 #' @export
 # ------------------------------------------------------------------------------
 
-show_installed <- function(library = "packrat/lib") {
+show_installed <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
   sapply(required_packages(c("devtools", "packrat", "sppr")),
          function(x) {
            x %in% installed.packages(lib.loc = library)
