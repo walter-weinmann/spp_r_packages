@@ -4,7 +4,11 @@
 \alias{remove_required}
 \title{Remove required packages and show the current installation state.}
 \usage{
-remove_required()
+remove_required(library = "packrat/lib")
+}
+\arguments{
+\item{library}{Character vector describing the location of R library
+trees to search through}
 }
 \description{
 Remove required packages and show the current installation state.
