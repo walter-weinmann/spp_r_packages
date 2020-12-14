@@ -69,7 +69,7 @@ install_required <- function(library = "packrat/lib") {
 #' @export
 # ------------------------------------------------------------------------------
 
-sremove_required <- function(library = "packrat/lib") {
+remove_required <- function(library = "packrat/lib") {
   print("1. Step: Remove the required packages <==============================")
 
   for (package in required_packages()) {
