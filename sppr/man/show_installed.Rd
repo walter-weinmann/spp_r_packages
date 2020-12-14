@@ -2,10 +2,10 @@
 % Please edit documentation in R/utils.R
 \name{show_installed}
 \alias{show_installed}
-\title{Show tht installed packages.}
+\title{Show the status of the required packages.}
 \usage{
 show_installed()
 }
 \description{
-Show tht installed packages.
+Show the status of the required packages.
 }

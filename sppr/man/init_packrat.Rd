@@ -2,10 +2,10 @@
 % Please edit documentation in R/utils.R
 \name{init_packrat}
 \alias{init_packrat}
-\title{Initialize packrat.}
+\title{Install and initialize the package packrat.}
 \usage{
 init_packrat()
 }
 \description{
-Initialize packrat.
+Install and initialize the package packrat.
 }
