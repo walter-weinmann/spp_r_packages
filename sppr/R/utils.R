@@ -22,6 +22,8 @@ init_packrat <- function() {
   print("2. Step: Initialize packrat <========================================")
 
   packrat::init()
+  packrat::status()
+  packrat::cleanup()
 
   print("3. Step: Terminate R <===============================================")
 
@@ -41,11 +43,17 @@ install_required <- function() {
   for (package in required_packages()) {
     if (!package %in% installed.packages()) {
       install.packages(package, repos = "https://cran.r-project.org/")
-      print("Installed package:", package)
+      print(paste("Installed package:", package, sep = " "))
     }
   }
 
-  print("2. Step: Show the current installation state <=======================")
+  print("2. Step: Save changes in packrat <===================================")
+
+  packrat::status()
+  packrat::cleanup()
+  packrat::snapshot()
+
+  print("3. Step: Show the current installation state <=======================")
 
   show_installed()
 }
@@ -62,12 +70,18 @@ remove_required <- function() {
 
   for (package in required_packages()) {
     if (package %in% installed.packages()) {
-      remove.packages(package)
-      print("Removed package:", package)
+      remove.packages(package, "packrat/lib")
+      print(paste("Removed package:", package, sep = " "))
     }
   }
 
-  print("2. Step: Show the current installation state <=======================")
+  print("2. Step: Save changes in packrat <===================================")
+
+  packrat::status()
+  packrat::cleanup()
+  packrat::snapshot()
+
+  print("3. Step: Show the current installation state <=======================")
 
   show_installed()
 }
