@@ -15,15 +15,22 @@ init_packrat <- function() {
 
   if (!"packrat" %in% installed.packages()) {
     install.packages("packrat",
-                     repos = "https://cran.r-project.org/")
+                     repos = "https://cran.r-project.org/",
+                     force = TRUE)
     print("Installed package: packrat")
   }
 
-  print("2. Step: Initialize packrat <========================================")
+  print("2.1 Step: Save changes in packrat (status) <=========================")
 
-  packrat::init()
   packrat::status()
+
+  print("2.2 Step: Save changes in packrat (clean) <==========================")
+
   packrat::clean()
+
+  print("2.3 Step: Save changes in packrat (snapshot <========================")
+
+  packrat::snapshot(infer.dependencies = FALSE)
 
   print("3. Step: Terminate R <===============================================")
 
@@ -44,16 +51,24 @@ install_required <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
 
   for (package in required_packages()) {
     if (!package %in% installed.packages(library)) {
-      install.packages(package, repos = "https://cran.r-project.org/")
+      install.packages(package,
+                       repos = "https://cran.r-project.org/",
+                       force = TRUE)
       print(paste("Installed package:", package, sep = " "))
     }
   }
 
-  print("2. Step: Save changes in packrat <===================================")
+  print("2.1 Step: Save changes in packrat (status) <=========================")
 
   packrat::status()
+
+  print("2.2 Step: Save changes in packrat (clean) <==========================")
+
   packrat::clean()
-  packrat::snapshot()
+
+  print("2.3 Step: Save changes in packrat (snapshot <========================")
+
+  packrat::snapshot(infer.dependencies = FALSE)
 
   print("3. Step: Show the current installation state <=======================")
 
@@ -79,11 +94,17 @@ remove_required <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
     }
   }
 
-  print("2. Step: Save changes in packrat <===================================")
+  print("2.1 Step: Save changes in packrat (status) <=========================")
 
   packrat::status()
+
+  print("2.2 Step: Save changes in packrat (clean) <==========================")
+
   packrat::clean()
-  packrat::snapshot()
+
+  print("2.3 Step: Save changes in packrat (snapshot <========================")
+
+  packrat::snapshot(infer.dependencies = FALSE)
 
   print("3. Step: Show the current installation state <=======================")
 
