@@ -4,11 +4,7 @@
 \alias{install_required}
 \title{Install the required packages and show the current installation state.}
 \usage{
-install_required(library = "packrat/lib")
-}
-\arguments{
-\item{library}{Character vector describing the location of R library
-trees to search through}
+install_required()
 }
 \description{
 Install the required packages and show the current installation state.

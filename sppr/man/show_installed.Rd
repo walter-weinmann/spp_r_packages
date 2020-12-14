@@ -4,7 +4,7 @@
 \alias{show_installed}
 \title{Show the status of the required packages.}
 \usage{
-show_installed(library = "packrat/lib")
+show_installed()
 }
 \arguments{
 \item{library}{Character vector describing the location of R library

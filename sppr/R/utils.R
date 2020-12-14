@@ -3,50 +3,13 @@
 # +nn Created on: 16.11.2020
 
 # ==============================================================================
-#' Install and initialize the package packrat.
-#'
-#' @import packrat
-#' @import utils
-#' @export
-# ------------------------------------------------------------------------------
-
-init_packrat <- function() {
-  print("1. Step: Install the packrat package <===============================")
-
-  if (!"packrat" %in% installed.packages()) {
-    install.packages("packrat",
-                     repos = "https://cran.r-project.org/",
-                     force = TRUE)
-    print("Installed package: packrat")
-  }
-
-  print("2.1 Step: Save changes in packrat (status) <=========================")
-
-  packrat::status()
-
-  print("2.2 Step: Save changes in packrat (clean) <==========================")
-
-  packrat::clean()
-
-  print("2.3 Step: Save changes in packrat (snapshot <========================")
-
-  packrat::snapshot(infer.dependencies = FALSE)
-
-  print("3. Step: Terminate R <===============================================")
-
-  quit(save = "no")
-}
-
-# ==============================================================================
 #' Install the required packages and show the current installation state.
 #'
-#' @param library Character vector describing the location of R library
-#'                trees to search through
 #' @import utils
 #' @export
 # ------------------------------------------------------------------------------
 
-install_required <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
+install_required <- function() {
   print("1. Step: Install the required packages <=============================")
 
   for (package in required_packages()) {
@@ -58,33 +21,19 @@ install_required <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
     }
   }
 
-  print("2.1 Step: Save changes in packrat (status) <=========================")
+  print("2. Step: Show the current installation state <=======================")
 
-  packrat::status()
-
-  print("2.2 Step: Save changes in packrat (clean) <==========================")
-
-  packrat::clean()
-
-  print("2.3 Step: Save changes in packrat (snapshot <========================")
-
-  packrat::snapshot(infer.dependencies = FALSE)
-
-  print("3. Step: Show the current installation state <=======================")
-
-  show_installed(library)
+  show_installed()
 }
 
 # ==============================================================================
 #' Remove required packages and show the current installation state.
 #'
-#' @param library Character vector describing the location of R library
-#'                trees to search through
 #' @import utils
 #' @export
 # ------------------------------------------------------------------------------
 
-remove_required <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
+remove_required <- function() {
   print("1. Step: Remove the required packages <==============================")
 
   for (package in required_packages()) {
@@ -94,21 +43,9 @@ remove_required <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
     }
   }
 
-  print("2.1 Step: Save changes in packrat (status) <=========================")
+  print("2. Step: Show the current installation state <=======================")
 
-  packrat::status()
-
-  print("2.2 Step: Save changes in packrat (clean) <==========================")
-
-  packrat::clean()
-
-  print("2.3 Step: Save changes in packrat (snapshot <========================")
-
-  packrat::snapshot(infer.dependencies = FALSE)
-
-  print("3. Step: Show the current installation state <=======================")
-
-  show_installed(library)
+  show_installed()
 }
 
 # ==============================================================================
@@ -152,10 +89,10 @@ required_packages <- function(add_ons = vector()) {
 #' @export
 # ------------------------------------------------------------------------------
 
-show_installed <- function(library = "packrat/lib/x86_64-w64-mingw32/4.0.3") {
-  sapply(required_packages(c("devtools", "packrat", "sppr")),
+show_installed <- function() {
+  sapply(required_packages(c("devtools", "sppr")),
          function(x) {
-           x %in% installed.packages(lib.loc = library)
+           x %in% installed.packages()
          }
   )
 }
