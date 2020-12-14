@@ -126,7 +126,7 @@ required_packages <- function(add_ons = vector()) {
 # ------------------------------------------------------------------------------
 
 show_installed <- function() {
-  sapply(required_packages(c("devtools", "packrat")),
+  sapply(required_packages(c("devtools", "packrat", "sppr")),
          function(x) {
            x %in% installed.packages()
          }
