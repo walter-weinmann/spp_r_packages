@@ -23,7 +23,7 @@ init_packrat <- function() {
 
   packrat::init()
   packrat::status()
-  packrat::cleanup()
+  packrat::clean()
 
   print("3. Step: Terminate R <===============================================")
 
@@ -52,7 +52,7 @@ install_required <- function(library = "packrat/lib") {
   print("2. Step: Save changes in packrat <===================================")
 
   packrat::status()
-  packrat::cleanup()
+  packrat::clean()
   packrat::snapshot()
 
   print("3. Step: Show the current installation state <=======================")
@@ -69,7 +69,7 @@ install_required <- function(library = "packrat/lib") {
 #' @export
 # ------------------------------------------------------------------------------
 
-remove_required <- function(library = "packrat/lib") {
+sremove_required <- function(library = "packrat/lib") {
   print("1. Step: Remove the required packages <==============================")
 
   for (package in required_packages()) {
@@ -82,7 +82,7 @@ remove_required <- function(library = "packrat/lib") {
   print("2. Step: Save changes in packrat <===================================")
 
   packrat::status()
-  packrat::cleanup()
+  packrat::clean()
   packrat::snapshot()
 
   print("3. Step: Show the current installation state <=======================")
