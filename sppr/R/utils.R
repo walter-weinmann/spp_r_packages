@@ -15,7 +15,7 @@ install_required <- function(library = .libPaths()[1]) {
   print("1. Step: Install the required packages <=============================")
 
   for (package in required_packages()) {
-    if (!package %in% installed.packages(library)) {
+    if (length(find.package(package, lib.loic = library, quiet = TRUE)) == 0) {
       install.packages(package,
                        library,
                        repos = "https://cran.r-project.org/",
@@ -42,7 +42,7 @@ remove_required <- function(library = .libPaths()[1]) {
   print("1. Step: Remove the required packages <==============================")
 
   for (package in required_packages()) {
-    if (package %in% installed.packages(library)) {
+    if (length(find.package(package, lib.loic = library, quiet = TRUE)) == 1) {
       remove.packages(package, library)
       print(paste("Removed package:", package, sep = " "))
     }
