@@ -43,8 +43,10 @@ remove_required <- function(library = .libPaths()[1]) {
 
   for (package in required_packages()) {
     if (length(find.package(package, lib.loc = library, quiet = TRUE)) == 1) {
-      remove.packages(package, library)
-      print(paste("Removed package:", package, sep = " "))
+      if (!(package %in% c("dplyr", "magrittr", "roxygen2", "RSQLite"))) {
+        remove.packages(package, library)
+        print(paste("Removed package:", package, sep = " "))
+      }
     }
   }
 
