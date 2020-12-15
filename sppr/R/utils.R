@@ -16,7 +16,7 @@ get_packages <- function(add_on_1 = vector(), add_on_2 = vector()) {
                     after = length(add_on_1))
 
   sort(append(add_ons,
-              packages_others,
+              packages_others(),
               after = length(add_ons)))
 }
 
