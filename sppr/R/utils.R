@@ -3,7 +3,26 @@
 # +nn Created on: 16.11.2020
 
 # ==============================================================================
-#' Install the required packages and show the current installation state.
+#' Create a combined and sorted character vector containing the necessary
+#' package names.
+#'
+#' @param add_on_1 Character vector containing additional pacckage names.
+#' @param add_on_2 Character vector containing additional pacckage names.
+# ------------------------------------------------------------------------------
+
+get_packages <- function(add_on_1 = vector(), add_on_2 = vector()) {
+  add_ons <- append(add_on_1,
+                    add_on_2,
+                    after = length(add_on_1))
+
+  sort(append(add_ons,
+              packages_others,
+              after = length(add_ons)))
+}
+
+# ==============================================================================
+#' Install all packages relevant for sppr and show the resulting installation
+#' state.
 #'
 #' @param library Character vector describing the location of R library
 #'                trees to search through
@@ -11,10 +30,10 @@
 #' @export
 # ------------------------------------------------------------------------------
 
-install_required <- function(library = .libPaths()[1]) {
+install <- function(library = .libPaths()[1]) {
   print("1. Step: Install the required packages <=============================")
 
-  for (package in required_packages()) {
+  for (package in get_packages(packages_imported())) {
     if (length(find.package(package, lib.loc = library, quiet = TRUE)) == 0) {
       install.packages(package,
                        library,
@@ -26,11 +45,57 @@ install_required <- function(library = .libPaths()[1]) {
 
   print("2. Step: Show the current installation state <=======================")
 
-  show_installed(library)
+  show_specific(library)
 }
 
 # ==============================================================================
-#' Remove required packages and show the current installation state.
+#' Definition of the sppr packages: basic packages.
+# ------------------------------------------------------------------------------
+
+packages_basic <- function() {
+  c("devtools",
+    "sppr")
+}
+
+# ==============================================================================
+#' Definition of the sppr packages: imported packages.
+# ------------------------------------------------------------------------------
+
+packages_imported <- function() {
+  c("dplyr",
+    "magrittr",
+    "roxygen2",
+    "RSQLite",
+    "stringr",
+    "utils")
+}
+
+# ==============================================================================
+#' Definition of the sppr packages: other packages.
+# ------------------------------------------------------------------------------
+
+packages_others <- function() {
+  c("assertive",
+    "data.table",
+    "DBI",
+    "forecast",
+    "formatR",
+    "ggplot2",
+    "installr",
+    "knitr",
+    "lintr",
+    "pillar",
+    "R6",
+    "readr",
+    "rmarkdown",
+    "testthat",
+    "TSstudio",
+    "xts",
+    "zoo")
+}
+
+# ==============================================================================
+#' Remove packages and show the resulting installation state.
 #'
 #' @param library Character vector describing the location of R library
 #'                trees to search through
@@ -38,66 +103,32 @@ install_required <- function(library = .libPaths()[1]) {
 #' @export
 # ------------------------------------------------------------------------------
 
-remove_required <- function(library = .libPaths()[1]) {
+remove <- function(library = .libPaths()[1]) {
   print("1. Step: Remove the required packages <==============================")
 
-  for (package in required_packages()) {
+  for (package in get_packages()) {
     if (length(find.package(package, lib.loc = library, quiet = TRUE)) == 1) {
-      if (!(package %in% c("dplyr", "magrittr", "roxygen2", "RSQLite"))) {
-        remove.packages(package, library)
-        print(paste("Removed package:", package, sep = " "))
-      }
+      remove.packages(package, library)
+      print(paste("Removed package:", package, sep = " "))
     }
   }
 
   print("2. Step: Show the current installation state <=======================")
 
-  show_installed(library)
+  show_specific(library)
 }
 
 # ==============================================================================
-#' Definition of the required packages.
-#'
-#' @param add_ons Character vvector containing additional pacckage names.
-# ------------------------------------------------------------------------------
-
-required_packages <- function(add_ons = vector()) {
-  sort(append(add_ons,
-              c("assertive",
-                "data.table",
-                "DBI",
-                "dplyr",
-                "forecast",
-                "formatR",
-                "ggplot2",
-                "installr",
-                "knitr",
-                "lintr",
-                "magrittr",
-                "pillar",
-                "R6",
-                "readr",
-                "rmarkdown",
-                "roxygen2",
-                "RSQLite",
-                "stringr",
-                "testthat",
-                "TSstudio",
-                "xts",
-                "zoo"),
-              after = length(add_ons)))
-}
-
-# ==============================================================================
-#' Show the status of the required packages.
+#' Show the status of all packages relevant for sppr.
 #'
 #' @param library Character vector describing the location of R library
 #'                trees to search through
 #' @export
 # ------------------------------------------------------------------------------
 
-show_installed <- function(library = .libPaths()[1]) {
-  sapply(required_packages(c("devtools", "sppr")),
+show_specific <- function(library = .libPaths()[1]) {
+  sapply(get_packages(packages_basic(),
+                      packages_imported()),
          function(x) {
            x %in% installed.packages(library)
          }
