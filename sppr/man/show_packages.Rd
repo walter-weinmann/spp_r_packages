@@ -7,8 +7,9 @@
 show_packages(library = .libPaths()[1])
 }
 \arguments{
-\item{library}{Character vector describing the location of R library
-trees to search through}
+\item{library}{character vector giving the library directories where to
+search for the packages. If missing, defaults to the first
+element of .libPaths()}
 }
 \description{
 Show the status of all packages relevant for sppr.

@@ -8,9 +8,8 @@ package names.}
 get_packages(add_on_1 = vector(), add_on_2 = vector())
 }
 \arguments{
-\item{add_on_1}{Character vector containing additional pacckage names.}
-
-\item{add_on_2}{Character vector containing additional pacckage names.}
+\item{add_on_1, add_on_2}{Character vectors containing additional pacckage
+names. Defaults to an empty vector}
 }
 \description{
 Create a combined and sorted character vector containing the necessary

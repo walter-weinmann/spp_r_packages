@@ -5,11 +5,17 @@
 \title{Install all packages relevant for sppr and show the resulting installation
 state.}
 \usage{
-install(library = .libPaths()[1])
+install(library = .libPaths()[1], repository = cran_repository)
 }
 \arguments{
-\item{library}{Character vector describing the location of R library
-trees to search through}
+\item{library}{character vector giving the library directories where to
+install the packages. If missing, defaults to the first
+element of .libPaths()}
+
+\item{repository}{character vector, the base URL(s) of the repositories to
+use, e.g., the URL of a CRAN mirror such as
+"https://cloud.r-project.org". If missing, defaults to
+"https://cran.r-project.org/"}
 }
 \description{
 Install all packages relevant for sppr and show the resulting installation

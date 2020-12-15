@@ -7,8 +7,9 @@
 remove(library = .libPaths()[1])
 }
 \arguments{
-\item{library}{Character vector describing the location of R library
-trees to search through}
+\item{library}{character vector giving the library directories where to
+remove the packages. If missing, defaults to the first
+element of .libPaths()}
 }
 \description{
 Remove packages and show the resulting installation state.

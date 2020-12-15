@@ -14,6 +14,7 @@ packages_imported <- c("dplyr",
                        "roxygen2",
                        "RSQLite",
                        "stringr",
+                       "testthat",
                        "utils")
 
 # Definition of the other sppr packages.
@@ -30,7 +31,6 @@ packages_others <- c("assertive",
                      "R6",
                      "readr",
                      "rmarkdown",
-                     "testthat",
                      "TSstudio",
                      "xts",
                      "zoo")
@@ -39,8 +39,8 @@ packages_others <- c("assertive",
 #' Create a combined and sorted character vector containing the necessary
 #' package names.
 #'
-#' @param add_on_1 Character vector containing additional pacckage names.
-#' @param add_on_2 Character vector containing additional pacckage names.
+#' @param add_on_1,add_on_2 Character vectors containing additional pacckage
+#'                          names. Defaults to an empty vector
 # ------------------------------------------------------------------------------
 
 get_packages <- function(add_on_1 = vector(), add_on_2 = vector()) {
@@ -57,59 +57,59 @@ get_packages <- function(add_on_1 = vector(), add_on_2 = vector()) {
 #' Install all packages relevant for sppr and show the resulting installation
 #' state.
 #'
-#' @param library Character vector describing the location of R library
-#'                trees to search through
+#' @param library character vector giving the library directories where to
+#'                install the packages. If missing, defaults to the first
+#'                element of .libPaths()
+#' @param repository character vector, the base URL(s) of the repositories to
+#'                   use, e.g., the URL of a CRAN mirror such as
+#'                   "https://cloud.r-project.org". If missing, defaults to
+#'                   "https://cran.r-project.org/"
 #' @import utils
 #' @export
 # ------------------------------------------------------------------------------
 
-install <- function(library = .libPaths()[1]) {
-  print("1. Step: Install the required packages <=============================")
-
+install <- function(library = .libPaths()[1],
+                    repository = cran_repository) {
   for (package in get_packages(packages_imported)) {
     if (length(find.package(package, lib.loc = library, quiet = TRUE)) == 0) {
       install.packages(package,
                        library,
-                       repos = cran_repository,
-                       force = TRUE)
-      print(paste("Installed package:", package, sep = " "))
+                       force   = TRUE,
+                       quiet   = TRUE,
+                       repos   = repository,
+                       verbose = FALSE)
     }
   }
 
-  print("2. Step: Show the current installation state <=======================")
-
-  show_packages(library)
+  sppr::show_packages(library)
 }
 
 # ==============================================================================
 #' Remove packages and show the resulting installation state.
 #'
-#' @param library Character vector describing the location of R library
-#'                trees to search through
+#' @param library character vector giving the library directories where to
+#'                remove the packages. If missing, defaults to the first
+#'                element of .libPaths()
 #' @import utils
 #' @export
 # ------------------------------------------------------------------------------
 
 remove <- function(library = .libPaths()[1]) {
-  print("1. Step: Remove the required packages <==============================")
-
   for (package in get_packages()) {
     if (length(find.package(package, lib.loc = library, quiet = TRUE)) == 1) {
       remove.packages(package, library)
-      print(paste("Removed package:", package, sep = " "))
     }
   }
 
-  print("2. Step: Show the current installation state <=======================")
-
-  show_packages(library)
+  sppr::show_packages(library)
 }
 
 # ==============================================================================
 #' Show the status of all packages relevant for sppr.
 #'
-#' @param library Character vector describing the location of R library
-#'                trees to search through
+#' @param library character vector giving the library directories where to
+#'                search for the packages. If missing, defaults to the first
+#'                element of .libPaths()
 #' @export
 # ------------------------------------------------------------------------------
 
@@ -125,20 +125,22 @@ show_packages <- function(library = .libPaths()[1]) {
 # ==============================================================================
 #' Update all packages and show the resulting installation state.
 #'
-#' @param library Character vector describing the location of R library
-#'                trees to search through
+#' @param library character vector giving the library directories where to
+#'                update the packages. If missing, defaults to the first
+#'                element of .libPaths()
+#' @param repository character vector, the base URL(s) of the repositories to
+#'                   use, e.g., the URL of a CRAN mirror such as
+#'                   "https://cloud.r-project.org". If missing, defaults to
+#'                   "https://cran.r-project.org/"
 #' @import utils
 #' @export
 # ------------------------------------------------------------------------------
 
-update <- function(library = .libPaths()[1]) {
-  print("1. Step: Updata all packages <=======================================")
-
+update <- function(library = .libPaths()[1],
+                   repository = cran_repository) {
   update.packages(lib.loc = library,
-                  repos   = cran_repository,
+                  repos   = repository,
                   ask     = TRUE)
 
-  print("2. Step: Show the current installation state <=======================")
-
-  show_packages(library)
+  sppr::show_packages(library)
 }
