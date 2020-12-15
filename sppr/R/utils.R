@@ -13,7 +13,7 @@ install_required <- function() {
   print("1. Step: Install the required packages <=============================")
 
   for (package in required_packages()) {
-    if (!package %in% installed.packages(library)) {
+    if (!package %in% installed.packages()) {
       install.packages(package,
                        repos = "https://cran.r-project.org/",
                        force = TRUE)
@@ -37,8 +37,8 @@ remove_required <- function() {
   print("1. Step: Remove the required packages <==============================")
 
   for (package in required_packages()) {
-    if (package %in% installed.packages(lib.loc = library)) {
-      remove.packages(package, library)
+    if (package %in% installed.packages()) {
+      remove.packages(package)
       print(paste("Removed package:", package, sep = " "))
     }
   }
