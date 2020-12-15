@@ -4,7 +4,11 @@
 \alias{show_installed}
 \title{Show the status of the required packages.}
 \usage{
-show_installed()
+show_installed(library = .libPaths()[1])
+}
+\arguments{
+\item{library}{Character vector describing the location of R library
+trees to search through}
 }
 \description{
 Show the status of the required packages.

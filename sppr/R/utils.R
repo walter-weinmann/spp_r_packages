@@ -5,16 +5,19 @@
 # ==============================================================================
 #' Install the required packages and show the current installation state.
 #'
+#' @param library Character vector describing the location of R library
+#'                trees to search through
 #' @import utils
 #' @export
 # ------------------------------------------------------------------------------
 
-install_required <- function() {
+install_required <- function(library = .libPaths()[1]) {
   print("1. Step: Install the required packages <=============================")
 
   for (package in required_packages()) {
-    if (!package %in% installed.packages()) {
+    if (!package %in% installed.packages(library)) {
       install.packages(package,
+                       library,
                        repos = "https://cran.r-project.org/",
                        force = TRUE)
       print(paste("Installed package:", package, sep = " "))
@@ -23,29 +26,31 @@ install_required <- function() {
 
   print("2. Step: Show the current installation state <=======================")
 
-  show_installed()
+  show_installed(library)
 }
 
 # ==============================================================================
 #' Remove required packages and show the current installation state.
 #'
+#' @param library Character vector describing the location of R library
+#'                trees to search through
 #' @import utils
 #' @export
 # ------------------------------------------------------------------------------
 
-remove_required <- function() {
+remove_required <- function(library = .libPaths()[1]) {
   print("1. Step: Remove the required packages <==============================")
 
   for (package in required_packages()) {
-    if (package %in% installed.packages()) {
-      remove.packages(package)
+    if (package %in% installed.packages(library)) {
+      remove.packages(package, library)
       print(paste("Removed package:", package, sep = " "))
     }
   }
 
   print("2. Step: Show the current installation state <=======================")
 
-  show_installed()
+  show_installed(library)
 }
 
 # ==============================================================================
@@ -84,13 +89,15 @@ required_packages <- function(add_ons = vector()) {
 # ==============================================================================
 #' Show the status of the required packages.
 #'
+#' @param library Character vector describing the location of R library
+#'                trees to search through
 #' @export
 # ------------------------------------------------------------------------------
 
-show_installed <- function() {
+show_installed <- function(library = .libPaths()[1]) {
   sapply(required_packages(c("devtools", "sppr")),
          function(x) {
-           x %in% installed.packages()
+           x %in% installed.packages(library)
          }
   )
 }
