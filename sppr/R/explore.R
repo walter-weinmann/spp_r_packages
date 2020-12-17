@@ -1,13 +1,16 @@
-# Title : sppr_utils Objective : Utility functionality.
-# Created by: Walter Weinmann Created on: 16.11.2020
+# Title : explore
+# Objective : Data Exploration.
+# Created by: Walter Weinmann
+# Created on: 16.11.2020
 
-
+# ==============================================================================
 #' Create a data frame containing the raw end-of-day data.
 #'
 #' @param database Directory path and file name of the database
 #' @return A data frame containing the raw end-of-day data
 #' @import RSQLite
 #' @export
+# ------------------------------------------------------------------------------
 
 create_df_eod_raw <- function(database) {
   con <- dbConnect(RSQLite::SQLite(), database)
@@ -36,13 +39,14 @@ create_df_eod_raw <- function(database) {
   df_raw_eod
 }
 
-
+# ==============================================================================
 #' Create a data frame containing the raw market index data.
 #'
 #' @param database Directory path and file name of the database
 #' @return A data frame containing the raw market index data
 #' @import RSQLite
 #' @export
+# ------------------------------------------------------------------------------
 
 create_df_mid_raw <- function(database) {
   con <- dbConnect(RSQLite::SQLite(), database)
@@ -70,27 +74,29 @@ create_df_mid_raw <- function(database) {
   df_raw_mid
 }
 
-
+# ==============================================================================
 #' Distribution of the volume of data on symbol.
 #'
 #' @param df_tad A dataframe containing transaction data
 #' @import dplyr
 #' @export
+# ------------------------------------------------------------------------------
 
 get_distr_symbol <- function(df_tad) {
   count(dplyr::group_by(df_tad$symbol))
 }
 
-
+# ==============================================================================
 #' Distribution of the volume of data on year.
 #'
 #' @param df_tad A dataframe containing transaction data
 #' @import dplyr
 #' @import stringr
 #' @export
+# ------------------------------------------------------------------------------
 
 get_distr_year <- function(df_tad) {
-  df_year <- data.frame(str_sub(df_tad$date, 1, 4))
+  df_year           <- data.frame(str_sub(df_tad$date, 1, 4))
   colnames(df_year) <- c("year")
   count(dplyr::group_by(df_year$year))
 }

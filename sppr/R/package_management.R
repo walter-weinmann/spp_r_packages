@@ -1,6 +1,7 @@
-# Title : package_management Objective : Package Management.
-# Created by: Walter Weinma/
-# +nn Created on: 16.11.2020
+# Title : package_management
+# Objective : Package Management.
+# Created by: Walter Weinmann
+# Created on: 16.11.2020
 
 cran_repository <- "https://cran.r-project.org/"
 
