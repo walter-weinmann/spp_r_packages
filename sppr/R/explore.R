@@ -12,7 +12,7 @@
 #' @export
 # ------------------------------------------------------------------------------
 
-create_df_eod_raw <- function(database) {
+create_eod_raw.df <- function(database) {
   con <- dbConnect(RSQLite::SQLite(), database)
   RSQLite::initExtension(con)
 
@@ -48,7 +48,7 @@ create_df_eod_raw <- function(database) {
 #' @export
 # ------------------------------------------------------------------------------
 
-create_df_mid_raw <- function(database) {
+create_mid_raw.df <- function(database) {
   con <- dbConnect(RSQLite::SQLite(), database)
   RSQLite::initExtension(con)
 

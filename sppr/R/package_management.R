@@ -33,6 +33,7 @@ packages_others <- c("assertive",
                      "readr",
                      "rmarkdown",
                      "TSstudio",
+                     "vctrs",
                      "xts",
                      "zoo")
 
