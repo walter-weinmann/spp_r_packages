@@ -1,7 +1,7 @@
 Package: sppr
 Type: Package
 Title: Evaluation of the Raw Data
-Version: 0.1.0
+Version: 0.2.0
 Author: Walter Weinmann [aut, cre]
 Maintainer: Walter Weinmann <walter@konnexions.ch>
 Description: This package evaluates the raw data from marketstack.
@@ -12,7 +12,10 @@ URL: https://github.com/walter-weinmann/spp_r_packages
 BugReports: https://github.com/walter-weinmann/spp_r_packages/issues
 RoxygenNote: 7.1.1
 Imports:
+    assertr,
     dplyr,
+    ggplot2,
+    magrittr,
     RSQLite,
     stringr,
     utils

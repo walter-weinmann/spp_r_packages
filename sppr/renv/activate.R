@@ -1,10 +1,9 @@
-
 local({
 
   Sys.setenv('_R_CHECK_LICENSE_' = FALSE)
   Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
 
-    # the requested version of renv
+  # the requested version of renv
   version <- "0.12.0"
 
   # the project directory
@@ -58,7 +57,8 @@ local({
       stop("failed to download renv ", version)
 
     # now attempt to install
-    status <- tryCatch(renv_bootstrap_install(version, tarball, library), error = identity)
+    status <- tryCatch(renv_bootstrap_install(version, tarball, library),
+                       error = identity)
     if (inherits(status, "error"))
       stop("failed to install renv ", version)
 
@@ -71,7 +71,7 @@ local({
     # https://bugs.r-project.org/bugzilla/show_bug.cgi?id=17715
     fixup <-
       Sys.info()[["sysname"]] == "Windows" &&
-      substring(url, 1L, 5L) == "file:"
+        substring(url, 1L, 5L) == "file:"
 
     if (fixup)
       mode <- "w+b"
@@ -108,7 +108,7 @@ local({
     # check for renv on CRAN matching this version
     db <- as.data.frame(available.packages(), stringsAsFactors = FALSE)
 
-    entry <- db[db$Package %in% "renv" & db$Version %in% version, ]
+    entry <- db[db$Package %in% "renv" & db$Version %in% version,]
     if (nrow(entry) == 0) {
       fmt <- "renv %s is not available from your declared package repositories"
       stop(sprintf(fmt, version))
@@ -133,12 +133,13 @@ local({
 
   renv_bootstrap_download_cran_archive <- function(version) {
 
-    name <- sprintf("renv_%s.tar.gz", version)
-    repos <- getOption("repos")
-    urls <- file.path(repos, "src/contrib/Archive/renv", name)
+    name     <- sprintf("renv_%s.tar.gz", version)
+    repos    <- getOption("repos")
+    urls     <- file.path(repos, "src/contrib/Archive/renv", name)
     destfile <- file.path(tempdir(), name)
 
-    message("* Downloading renv ", version, " from CRAN archive ... ", appendLF = FALSE)
+    message("* Downloading renv ", version, " from CRAN archive ... ",
+            appendLF = FALSE)
 
     for (url in urls) {
 
@@ -168,23 +169,25 @@ local({
     # prepare download options
     pat <- Sys.getenv("GITHUB_PAT")
     if (nzchar(Sys.which("curl")) && nzchar(pat)) {
-      fmt <- "--location --fail --header \"Authorization: token %s\""
+      fmt   <- "--location --fail --header \"Authorization: token %s\""
       extra <- sprintf(fmt, pat)
       saved <- options("download.file.method", "download.file.extra")
       options(download.file.method = "curl", download.file.extra = extra)
       on.exit(do.call(base::options, saved), add = TRUE)
     } else if (nzchar(Sys.which("wget")) && nzchar(pat)) {
-      fmt <- "--header=\"Authorization: token %s\""
+      fmt   <- "--header=\"Authorization: token %s\""
       extra <- sprintf(fmt, pat)
       saved <- options("download.file.method", "download.file.extra")
       options(download.file.method = "wget", download.file.extra = extra)
       on.exit(do.call(base::options, saved), add = TRUE)
     }
 
-    message("* Downloading renv ", version, " from GitHub ... ", appendLF = FALSE)
+    message("* Downloading renv ", version, " from GitHub ... ", appendLF =
+      FALSE)
 
-    url <- file.path("https://api.github.com/repos/rstudio/renv/tarball", version)
-    name <- sprintf("renv_%s.tar.gz", version)
+    url      <- file.path("https://api.github
+    .com/repos/rstudio/renv/tarball", version)
+    name     <- sprintf("renv_%s.tar.gz", version)
     destfile <- file.path(tempdir(), name)
 
     status <- tryCatch(
@@ -209,10 +212,11 @@ local({
     dir.create(library, showWarnings = FALSE, recursive = TRUE)
 
     # invoke using system2 so we can capture and report output
-    bin <- R.home("bin")
-    exe <- if (Sys.info()[["sysname"]] == "Windows") "R.exe" else "R"
-    r <- file.path(bin, exe)
-    args <- c("--vanilla", "CMD", "INSTALL", "-l", shQuote(library), shQuote(tarball))
+    bin    <- R.home("bin")
+    exe    <- if (Sys.info()[["sysname"]] == "Windows") "R.exe" else "R"
+    r      <- file.path(bin, exe)
+    args   <- c("--vanilla", "CMD", "INSTALL", "-l", shQuote(library),
+                shQuote(tarball))
     output <- system2(r, args, stdout = TRUE, stderr = TRUE)
     message("Done!")
 
@@ -220,8 +224,8 @@ local({
     status <- attr(output, "status")
     if (is.numeric(status) && !identical(status, 0L)) {
       header <- "Error installing renv:"
-      lines <- paste(rep.int("=", nchar(header)), collapse = "")
-      text <- c(header, lines, output)
+      lines  <- paste(rep.int("=", nchar(header)), collapse = "")
+      text   <- c(header, lines, output)
       writeLines(text, con = stderr())
     }
 
@@ -233,13 +237,13 @@ local({
 
     # construct version prefix
     version <- paste(R.version$major, R.version$minor, sep = ".")
-    prefix <- paste("R", numeric_version(version)[1, 1:2], sep = "-")
+    prefix  <- paste("R", numeric_version(version)[1, 1:2], sep = "-")
 
     # include SVN revision for development versions of R
     # (to avoid sharing platform-specific artefacts with released versions of R)
     devel <-
-      identical(R.version[["status"]],   "Under development (unstable)") ||
-      identical(R.version[["nickname"]], "Unsuffered Consequences")
+      identical(R.version[["status"]], "Under development (unstable)") ||
+        identical(R.version[["nickname"]], "Unsuffered Consequences")
 
     if (devel)
       prefix <- paste(prefix, R.version[["svn rev"]], sep = "-r")
@@ -280,15 +284,17 @@ local({
     # assume four-component versions are from GitHub; three-component
     # versions are from CRAN
     components <- strsplit(loadedversion, "[.-]")[[1]]
-    remote <- if (length(components) == 4L)
+    remote     <- if (length(components) == 4L)
       paste("rstudio/renv", loadedversion, sep = "@")
     else
       paste("renv", loadedversion, sep = "@")
 
     fmt <- paste(
-      "renv %1$s was loaded from project library, but renv %2$s is recorded in lockfile.",
+      "renv %1$s was loaded from project library, but renv %2$s is recorded
+      in lockfile.",
       "Use `renv::record(\"%3$s\")` to record this version in the lockfile.",
-      "Use `renv::restore(packages = \"renv\")` to install renv %2$s into the project library.",
+      "Use `renv::restore(packages = \"renv\")` to install renv %2$s into the
+       project library.",
       sep = "\n"
     )
 

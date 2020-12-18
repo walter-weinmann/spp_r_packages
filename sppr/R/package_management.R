@@ -6,8 +6,7 @@
 cran_repository <- "https://cran.r-project.org/"
 
 # Definition of the basic packages outside sppr.
-packages_basic <- c("devtools",
-                    "sppr")
+packages_basic <- c("sppr")
 
 # Definition of the packages imported by sppr.
 packages_imported <- c("dplyr",
@@ -22,6 +21,7 @@ packages_imported <- c("dplyr",
 packages_others <- c("assertive",
                      "data.table",
                      "DBI",
+                     "devtools",
                      "forecast",
                      "formatR",
                      "ggplot2",

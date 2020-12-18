@@ -28,13 +28,13 @@ test_that("update(): update twice", {
 
 test_that("remove(): most packages are removed", {
   result <- sppr::remove()
-  expect_equal(length(result[result == TRUE]), 11)
+  expect_equal(length(result[result == TRUE]), 8)
 })
 
 test_that("remove(): remove twice", {
   result <- sppr::remove()
   result <- sppr::remove()
-  expect_equal(length(result[result == TRUE]), 11)
+  expect_equal(length(result[result == TRUE]), 8)
 })
 
 test_that("remove(): all packages are reinstalled", {
