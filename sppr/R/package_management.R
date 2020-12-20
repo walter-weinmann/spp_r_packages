@@ -53,6 +53,11 @@ get_packages <- function(add_on_1 = vector(), add_on_2 = vector()) {
   sort(append(add_ons,
               packages_others,
               after = length(add_ons)))
+
+  sort(c("assertive",
+         "dplyr",
+         "ggplot2",
+         "RSQLite"))
 }
 
 # ==============================================================================
