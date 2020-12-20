@@ -79,6 +79,8 @@ distr_year_symbol.df <- function(tad_raw.df) {
 # ------------------------------------------------------------------------------
 
 distr_year_symbols.barplot <- function(tad_raw.df) {
+  data <- NULL
+
   ggplot(data = distr_year_symbol.df(tad_raw.df),
          aes(x = data$Year,
              y = data$Symbols)) +
@@ -101,6 +103,8 @@ distr_year_symbols.barplot <- function(tad_raw.df) {
 # ------------------------------------------------------------------------------
 
 distr_year_trading_days.barplot <- function(tad_raw.df) {
+  data <- NULL
+
   ggplot(data = distr_year.df(tad_raw.df),
          aes(x = data$Year,
              y = data$`Trading Days`)) +
