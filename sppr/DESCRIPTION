@@ -1,7 +1,7 @@
 Package: sppr
 Type: Package
 Title: Evaluation of the Raw Data
-Version: 0.2.0
+Version: 0.3.0
 Author: Walter Weinmann [aut, cre]
 Maintainer: Walter Weinmann <walter@konnexions.ch>
 Description: This package evaluates the raw data from marketstack.

@@ -57,11 +57,11 @@ eod_raw.df <- function(database) {
          low,
          close,
          volume,
-         open_adj_orig adj_open,
-         high_adj_orig adj_high,
-         low_adj_orig adj_low,
-         close_adj_orig adj_close,
-         volume_adj_orig adj_volume
+         adj_open_orig adj_open,
+         adj_high_orig adj_high,
+         adj_low_orig adj_low,
+         adj_close_orig adj_close,
+         adj_volume_orig adj_volume
     FROM eod_data
    ORDER BY date,
             symbol")
@@ -129,11 +129,11 @@ mid_raw.df <- function(database) {
          low,
          close,
          volume,
-         open_adj_orig adj_open,
-         high_adj_orig adj_high,
-         low_adj_orig adj_low,
-         close_adj_orig adj_close,
-         volume_adj_orig adj_volume
+         adj_open_orig adj_open,
+         adj_high_orig adj_high,
+         adj_low_orig adj_low,
+         adj_close_orig adj_close,
+         adj_volume_orig adj_volume
     FROM mid_data
    ORDER BY date,
             symbol")
